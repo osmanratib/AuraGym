@@ -22,115 +22,116 @@ function PrecisionStudioBarbell() {
 
   useFrame((_, delta) => {
     if (groupRef.current) {
-      // Gentle, continuous studio rotation
-      groupRef.current.rotation.y += delta * 0.3;
+      // Gentle studio turntable rotation
+      groupRef.current.rotation.y += delta * 0.35;
 
-      // Subtle responsive mouse tilt (smooth, restrained)
+      // Restrained, smooth interactive tilt
       groupRef.current.rotation.x = THREE.MathUtils.lerp(
         groupRef.current.rotation.x,
-        0.18 - mouse.y * 0.18,
-        0.06
+        0.15 - mouse.y * 0.15,
+        0.05
       );
       groupRef.current.rotation.z = THREE.MathUtils.lerp(
         groupRef.current.rotation.z,
-        -mouse.x * 0.12,
-        0.06
+        -mouse.x * 0.1,
+        0.05
       );
     }
   });
 
   return (
+    /* Perfectly measured: 1.8 units total width, never overflows */
     <group ref={groupRef} position={[0, 0.05, 0]}>
-      {/* Central Shaft (Calibrated 28mm stainless steel, total length 2.8 units for perfect framing) */}
+      {/* 1. Barbell Shaft (Stainless Steel with knurling accents, length 1.8) */}
       <mesh rotation={[0, 0, Math.PI / 2]}>
-        <cylinderGeometry args={[0.048, 0.048, 2.7, 32]} />
+        <cylinderGeometry args={[0.038, 0.038, 1.8, 32]} />
         <meshStandardMaterial
-          color="#1C1C20"
+          color="#1E1E22"
           metalness={0.92}
-          roughness={0.2}
+          roughness={0.18}
         />
       </mesh>
 
-      {/* Precision Knurling Ring Bands */}
-      {[-0.55, -0.28, 0.28, 0.55].map((pos, idx) => (
+      {/* Knurled Grip Texture Marks (precision rings) */}
+      {[-0.38, -0.19, 0.19, 0.38].map((pos, idx) => (
         <mesh key={idx} position={[pos, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-          <torusGeometry args={[0.052, 0.005, 16, 32]} />
+          <torusGeometry args={[0.041, 0.004, 16, 32]} />
           <meshStandardMaterial color="#FF521B" metalness={0.85} roughness={0.25} />
         </mesh>
       ))}
 
       {/* Center Balance Ring */}
       <mesh rotation={[0, 0, Math.PI / 2]}>
-        <torusGeometry args={[0.051, 0.004, 16, 32]} />
+        <torusGeometry args={[0.04, 0.003, 16, 32]} />
         <meshStandardMaterial color="#FF521B" metalness={0.9} roughness={0.2} />
       </mesh>
 
-      {/* Left Inner Collar Bushing */}
-      <mesh position={[-0.88, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <cylinderGeometry args={[0.09, 0.09, 0.05, 32]} />
-        <meshStandardMaterial color="#0E0E11" metalness={0.95} roughness={0.15} />
+      {/* Left Inner Collar */}
+      <mesh position={[-0.58, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+        <cylinderGeometry args={[0.065, 0.065, 0.04, 32]} />
+        <meshStandardMaterial color="#111114" metalness={0.95} roughness={0.15} />
       </mesh>
 
-      {/* Right Inner Collar Bushing */}
-      <mesh position={[0.88, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <cylinderGeometry args={[0.09, 0.09, 0.05, 32]} />
-        <meshStandardMaterial color="#0E0E11" metalness={0.95} roughness={0.15} />
+      {/* Right Inner Collar */}
+      <mesh position={[0.58, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+        <cylinderGeometry args={[0.065, 0.065, 0.04, 32]} />
+        <meshStandardMaterial color="#111114" metalness={0.95} roughness={0.15} />
       </mesh>
 
       {/* Left Calibrated 25KG Competition Plate Stack */}
-      <group position={[-1.05, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+      <group position={[-0.7, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         {/* Main 25KG Bumper Plate */}
-        <mesh position={[0, -0.05, 0]}>
-          <cylinderGeometry args={[0.62, 0.62, 0.1, 48]} />
+        <mesh position={[0, -0.04, 0]}>
+          <cylinderGeometry args={[0.45, 0.45, 0.08, 48]} />
           <meshStandardMaterial color="#141417" metalness={0.7} roughness={0.3} />
         </mesh>
-        {/* Inner Plate Inset */}
+        {/* Inner Plate Bezel */}
         <mesh position={[0, 0.02, 0]}>
-          <cylinderGeometry args={[0.54, 0.54, 0.09, 48]} />
+          <cylinderGeometry args={[0.39, 0.39, 0.07, 48]} />
           <meshStandardMaterial color="#1D1D22" metalness={0.65} roughness={0.35} />
         </mesh>
-        {/* Chrome Center Hub */}
-        <mesh position={[0, -0.05, 0]}>
-          <torusGeometry args={[0.22, 0.015, 16, 32]} />
+        {/* Chrome Hub Ring */}
+        <mesh position={[0, -0.04, 0]}>
+          <torusGeometry args={[0.15, 0.012, 16, 32]} />
           <meshStandardMaterial color="#D8D8E0" metalness={0.98} roughness={0.1} />
         </mesh>
         {/* Ember Outer Rim Ring */}
-        <mesh position={[0, -0.05, 0]}>
-          <torusGeometry args={[0.615, 0.012, 16, 48]} />
-          <meshStandardMaterial color="#FF521B" emissive="#FF521B" emissiveIntensity={0.5} />
+        <mesh position={[0, -0.04, 0]}>
+          <torusGeometry args={[0.446, 0.009, 16, 48]} />
+          <meshStandardMaterial color="#FF521B" emissive="#FF521B" emissiveIntensity={0.6} />
         </mesh>
         {/* End Bar Cap Nut */}
-        <mesh position={[0, -0.22, 0]}>
-          <cylinderGeometry args={[0.065, 0.065, 0.24, 32]} />
+        <mesh position={[0, -0.15, 0]}>
+          <cylinderGeometry args={[0.048, 0.048, 0.16, 32]} />
           <meshStandardMaterial color="#282830" metalness={0.85} roughness={0.2} />
         </mesh>
       </group>
 
       {/* Right Calibrated 25KG Competition Plate Stack */}
-      <group position={[1.05, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+      <group position={[0.7, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         {/* Main 25KG Bumper Plate */}
-        <mesh position={[0, 0.05, 0]}>
-          <cylinderGeometry args={[0.62, 0.62, 0.1, 48]} />
+        <mesh position={[0, 0.04, 0]}>
+          <cylinderGeometry args={[0.45, 0.45, 0.08, 48]} />
           <meshStandardMaterial color="#141417" metalness={0.7} roughness={0.3} />
         </mesh>
-        {/* Inner Plate Inset */}
+        {/* Inner Plate Bezel */}
         <mesh position={[0, -0.02, 0]}>
-          <cylinderGeometry args={[0.54, 0.54, 0.09, 48]} />
+          <cylinderGeometry args={[0.39, 0.39, 0.07, 48]} />
           <meshStandardMaterial color="#1D1D22" metalness={0.65} roughness={0.35} />
         </mesh>
-        {/* Chrome Center Hub */}
-        <mesh position={[0, 0.05, 0]}>
-          <torusGeometry args={[0.22, 0.015, 16, 32]} />
+        {/* Chrome Hub Ring */}
+        <mesh position={[0, 0.04, 0]}>
+          <torusGeometry args={[0.15, 0.012, 16, 32]} />
           <meshStandardMaterial color="#D8D8E0" metalness={0.98} roughness={0.1} />
         </mesh>
         {/* Ember Outer Rim Ring */}
-        <mesh position={[0, 0.05, 0]}>
-          <torusGeometry args={[0.615, 0.012, 16, 48]} />
-          <meshStandardMaterial color="#FF521B" emissive="#FF521B" emissiveIntensity={0.5} />
+        <mesh position={[0, 0.04, 0]}>
+          <torusGeometry args={[0.446, 0.009, 16, 48]} />
+          <meshStandardMaterial color="#FF521B" emissive="#FF521B" emissiveIntensity={0.6} />
         </mesh>
         {/* End Bar Cap Nut */}
-        <mesh position={[0, 0.22, 0]}>
-          <cylinderGeometry args={[0.065, 0.065, 0.24, 32]} />
+        <mesh position={[0, 0.15, 0]}>
+          <cylinderGeometry args={[0.048, 0.048, 0.16, 32]} />
           <meshStandardMaterial color="#282830" metalness={0.85} roughness={0.2} />
         </mesh>
       </group>
@@ -149,37 +150,35 @@ export default function HeroScene() {
   if (reducedMotion) {
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <div className="px-5 py-2.5 rounded-full border border-black/10 bg-white/80 shadow-sm">
-          <span className="font-heading font-bold text-xs uppercase tracking-[0.2em] text-aura-ink">
-            Aura Calibrated 25KG
-          </span>
+        <div className="px-4 py-2 rounded-full border border-black/10 bg-transparent text-xs font-heading font-semibold uppercase tracking-widest text-aura-ink">
+          Aura 25KG Eleiko Spec
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-full relative cursor-grab active:cursor-grabbing select-none">
+    <div className="w-full h-full relative cursor-grab active:cursor-grabbing select-none bg-transparent">
       <Canvas
-        camera={{ position: [0, 0.35, 2.7], fov: 45 }}
+        camera={{ position: [0, 0.25, 2.5], fov: 42 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
       >
         <ambientLight intensity={1.8} />
-        <directionalLight position={[4, 5, 4]} intensity={2.2} color="#FFFFFF" />
-        <directionalLight position={[-4, -2, 2]} intensity={1.1} color="#FFF5F0" />
-        <pointLight position={[0, 0.8, 1.2]} intensity={1.5} color="#FF521B" distance={3.5} />
+        <directionalLight position={[3, 5, 3]} intensity={2.2} color="#FFFFFF" />
+        <directionalLight position={[-3, -2, 2]} intensity={1.0} color="#FAF9F6" />
+        <pointLight position={[0, 0.6, 1.2]} intensity={1.2} color="#FF521B" distance={3.0} />
 
-        <Float speed={1.8} rotationIntensity={0.15} floatIntensity={0.25}>
+        <Float speed={1.8} rotationIntensity={0.12} floatIntensity={0.2}>
           <PrecisionStudioBarbell />
         </Float>
 
         <ContactShadows
-          position={[0, -0.65, 0]}
-          opacity={0.35}
-          scale={3.6}
-          blur={2.4}
-          far={2.2}
+          position={[0, -0.55, 0]}
+          opacity={0.28}
+          scale={3.0}
+          blur={2.0}
+          far={1.8}
         />
       </Canvas>
     </div>
