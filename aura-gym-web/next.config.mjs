@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['three'],
   images: {
-    formats: ['image/avif', 'image/webp'],
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
