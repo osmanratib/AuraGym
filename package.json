@@ -1,0 +1,20 @@
+{
+  "name": "aura-gym-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "aura-gym-web",
+    "aura-gym-api"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace=aura-gym-web",
+    "dev:api": "npm run dev --workspace=aura-gym-api",
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:web\"",
+    "build:web": "npm run build --workspace=aura-gym-web",
+    "build:api": "npm run build --workspace=aura-gym-api",
+    "build": "npm run build:api && npm run build:web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
