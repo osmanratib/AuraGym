@@ -6,14 +6,8 @@ import Footer from '@/components/layout/Footer';
 import { AuthProvider } from '@/lib/auth';
 
 export const metadata: Metadata = {
-  title: 'Aura Gym — Elite Athletic Performance & Recovery Sanctuary',
-  description: 'A premium, motion-led fitness sanctuary fusing biomechanical strength training, metabolic conditioning, and cold contrast recovery.',
-  keywords: ['gym', 'luxury fitness', 'strength training', 'recovery', 'athletic performance', 'HIIT', 'olympic lifting'],
-  openGraph: {
-    title: 'Aura Gym — Elite Athletic Performance & Recovery Sanctuary',
-    description: 'Transform your physical ceiling with calibrated biomechanics, elite master coaches, and contrast recovery.',
-    type: 'website',
-  },
+  title: 'Aura Gym — Athletic Performance & Recovery Sanctuary',
+  description: 'A premium fitness sanctuary fusing biomechanical strength training, metabolic conditioning, and active cellular recovery.',
 };
 
 export default function RootLayout({
@@ -22,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className="bg-aura-black text-aura-bone antialiased selection:bg-aura-ember/30 selection:text-white">
+    <html lang="en" className="scroll-smooth">
+      <body className="bg-aura-canvas text-aura-ink antialiased">
         <AuthProvider>
           <SmoothScroll>
             <div className="flex flex-col min-h-screen">

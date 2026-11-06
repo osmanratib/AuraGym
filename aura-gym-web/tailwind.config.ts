@@ -10,13 +10,16 @@ const config: Config = {
     extend: {
       colors: {
         aura: {
-          black: "#0B0B0D",
-          graphite: "#17171B",
-          bone: "#F4F1EA",
-          mist: "#9A9AA3",
-          ember: "#FF5A1F",
-          "ember-hover": "#E04C14",
-          glow: "#FFB38A",
+          canvas: "#F8F8F6",
+          surface: "#FFFFFF",
+          subtle: "#F1F1EE",
+          ink: "#111114",
+          slate: "#686873",
+          mist: "#9E9EA8",
+          ember: "#FF521B",
+          "ember-dark": "#E04310",
+          "ember-subtle": "#FFF2EC",
+          "ember-glow": "rgba(255, 82, 27, 0.15)",
         },
       },
       fontFamily: {
@@ -24,18 +27,21 @@ const config: Config = {
         body: ["var(--font-inter)", "sans-serif"],
       },
       maxWidth: {
-        content: "1200px",
+        content: "1240px",
       },
       borderRadius: {
-        card: "16px",
-      },
-      transitionTimingFunction: {
-        aura: "cubic-bezier(0.22, 1, 0.36, 1)",
+        card: "20px",
+        pill: "9999px",
       },
       boxShadow: {
-        "aura-card": "0 8px 30px rgba(0, 0, 0, 0.45)",
-        "aura-glow": "0 0 35px rgba(255, 90, 31, 0.25)",
-        "aura-glow-strong": "0 0 60px rgba(255, 90, 31, 0.45)",
+        "aura-sm": "0 2px 10px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02)",
+        "aura-card": "0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02)",
+        "aura-card-hover": "0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 6px 12px -2px rgba(0, 0, 0, 0.03)",
+        "aura-glow": "0 10px 25px -5px rgba(255, 82, 27, 0.35)",
+        "aura-glow-hover": "0 15px 35px -5px rgba(255, 82, 27, 0.45)",
+      },
+      transitionTimingFunction: {
+        aura: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

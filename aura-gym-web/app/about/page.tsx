@@ -8,142 +8,84 @@ import Button from '@/components/ui/Button';
 import { ShieldCheck, Compass, Zap, Flame } from 'lucide-react';
 
 const VALUES = [
-  {
-    icon: Compass,
-    title: 'Precision Biomechanics',
-    desc: 'Every machine and bar path is chosen to match human muscular kinetics, preventing shearing forces while maximizing neural recruitment.',
-  },
-  {
-    icon: Zap,
-    title: 'Metabolic Optimization',
-    desc: 'We integrate real-time bio-feedback with progressive conditioning so you build sustainable engine capacity without burnout.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Restorative Longevity',
-    desc: 'Cold contrast pools, Finnish dry saunas, and pneumatic compression allow rapid autonomic nervous system recovery.',
-  },
-  {
-    icon: Flame,
-    title: 'Uncompromised Community',
-    desc: 'An intentional culture of disciplined athletes, executives, and specialists focused on genuine personal evolution.',
-  },
+  { icon: Compass, title: 'Precision Biomechanics', desc: 'Every machine and bar path matches human muscular kinetics, preventing shearing while maximizing neural recruitment.' },
+  { icon: Zap, title: 'Metabolic Optimization', desc: 'Real-time bio-feedback with progressive conditioning builds sustainable engine capacity without burnout.' },
+  { icon: ShieldCheck, title: 'Restorative Longevity', desc: 'Cold contrast pools, saunas, and pneumatic compression allow rapid nervous system recovery.' },
+  { icon: Flame, title: 'Intentional Community', desc: 'A culture of disciplined athletes and specialists focused on genuine personal evolution.' },
 ];
 
 const GALLERY_IMAGES = [
-  {
-    url: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1200&q=80',
-    title: 'Heavy Strength & Free Weight Floor',
-    subtitle: 'Calibrated competition plates & Olympic racks',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=80',
-    title: 'Metabolic Engine Deck',
-    subtitle: 'Custom sprint tracks and curved assault treads',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80',
-    title: 'Contrast Thermal Sanctuary',
-    subtitle: '38°F cold immersion & 195°F cedar saunas',
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&w=1200&q=80',
-    title: 'Private Athlete Coaching Suite',
-    subtitle: 'High-speed bar velocity telemetry',
-  },
+  { url: '/images/facility-cardio.jpg', title: 'Cardio & Conditioning Deck', subtitle: 'Assault treads & clean architectural lighting' },
+  { url: '/images/facility-turf.jpg', title: 'Functional Sled Turf Zone', subtitle: 'Astroturf sled lanes and hex bar training' },
+  { url: '/images/facility-strength.jpg', title: 'Strength & Machine Floor', subtitle: 'Leg presses, hacks, and calibrated weights' },
+  { url: '/images/weights-floor.jpg', title: 'Free Weight Arsenal', subtitle: 'Competition plates and rubberized dumbbells' },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="pt-32 pb-24 bg-aura-black">
-      {/* Hero Header */}
+    <div className="pt-28 pb-24 bg-aura-canvas">
+      {/* Header */}
       <section className="max-w-content mx-auto px-6 md:px-12 mb-24">
         <Reveal>
-          <div className="text-xs uppercase tracking-widest font-heading text-aura-ember mb-3 flex items-center gap-2">
-            <span className="w-8 h-[1px] bg-aura-ember" />
-            <span>Our Origin & Philosophy</span>
+          <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-3 flex items-center gap-3">
+            <span className="w-8 h-[1.5px] bg-aura-ember" />
+            <span>Our Philosophy</span>
           </div>
-          <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-7xl text-aura-bone tracking-tight max-w-4xl mb-8 leading-tight">
-            We Reimagined The Gym As An Athletic Sanctuary.
+          <h1 className="font-heading font-bold text-4xl sm:text-6xl md:text-7xl text-aura-ink tracking-[-0.04em] max-w-4xl mb-7 leading-tight">
+            We reimagined the gym as an athletic sanctuary.
           </h1>
-          <p className="text-lg md:text-xl text-aura-mist max-w-2xl leading-relaxed">
-            Founded with one clear mandate: eliminate the clutter, commercial gimmicks, and distractions of generic fitness chains in pursuit of pure, uncompromised athletic development.
+          <p className="text-lg text-aura-slate max-w-2xl leading-relaxed font-light">
+            Founded to eliminate clutter, commercial gimmicks, and distractions in pursuit of uncompromised athletic development.
           </p>
         </Reveal>
       </section>
 
-      {/* Brand Story Parallax Row */}
-      <section className="max-w-content mx-auto px-6 md:px-12 mb-32">
+      {/* Story Row */}
+      <section className="max-w-content mx-auto px-6 md:px-12 mb-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <Reveal direction="left">
-            <div className="relative h-[480px] w-full rounded-card overflow-hidden border border-white/10 shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
-                alt="Aura Gym Facility Story"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-aura-black/90 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <span className="text-[10px] uppercase font-mono tracking-widest text-aura-ember">
-                  CALIBRATED ATMOSPHERE
-                </span>
-                <p className="font-heading text-lg font-bold text-aura-bone mt-1">
-                  Dark acoustic architecture engineered for total focus.
-                </p>
+            <div className="relative h-[440px] w-full rounded-card overflow-hidden border border-black/[0.06] shadow-aura-card">
+              <Image src="/images/facility-strength.jpg" alt="Aura Gym" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5">
+                <span className="text-[10px] uppercase tracking-[0.2em] font-heading font-semibold text-aura-ember">Calibrated Atmosphere</span>
+                <p className="font-heading text-base font-bold text-aura-ink mt-0.5">Engineered for total focus and output.</p>
               </div>
             </div>
           </Reveal>
 
-          <Reveal direction="right" delay={0.2} className="space-y-6 text-aura-mist leading-relaxed">
-            <h3 className="font-heading font-black text-2xl sm:text-3xl text-aura-bone tracking-tight">
-              Crafted For Those Who Value Process Over Trends.
+          <Reveal direction="right" delay={0.15} className="space-y-5 text-aura-slate leading-relaxed">
+            <h3 className="font-heading font-bold text-2xl sm:text-3xl text-aura-ink tracking-[-0.02em]">
+              Process over trends.
             </h3>
-            <p>
-              Traditional gyms pack floors with rows of redundant chrome machinery and loud commercials. Aura Gym was conceived as the antithesis — an architecturally considered dark space bathed in warm amber tones, where each zone has a dedicated acoustic and kinetic purpose.
-            </p>
-            <p>
-              Whether you are preparing for high-level athletic competition or building resilience for relentless executive demands, our equipment and recovery protocols treat training as an exacting science.
-            </p>
-            <div className="pt-4">
-              <Button href="/contact" size="md">
-                Experience The Sanctuary
-              </Button>
+            <p className="font-light">Traditional gyms pack floors with redundant machinery and loud commercials. Aura Gym was conceived as the antithesis — an architecturally considered space where each zone has a dedicated kinetic purpose.</p>
+            <p className="font-light">Whether preparing for competition or building executive resilience, our equipment and recovery protocols treat training as an exacting science.</p>
+            <div className="pt-3">
+              <Button href="/contact" size="md">Experience The Sanctuary</Button>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="bg-[#0e0e12] border-y border-white/5 py-24 mb-32">
+      {/* Values */}
+      <section className="bg-white border-y border-black/[0.06] py-24 mb-28">
         <div className="max-w-content mx-auto px-6 md:px-12">
-          <Reveal className="text-center max-w-xl mx-auto mb-16">
-            <div className="text-xs uppercase tracking-widest font-heading text-aura-ember mb-2">
-              Foundational Principles
-            </div>
-            <h2 className="font-heading font-black text-3xl sm:text-5xl text-aura-bone tracking-tight">
-              The Aura Standards
-            </h2>
+          <Reveal className="text-center max-w-md mx-auto mb-14">
+            <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-2">Principles</div>
+            <h2 className="font-heading font-bold text-3xl sm:text-5xl text-aura-ink tracking-[-0.03em]">The Aura Standards</h2>
           </Reveal>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {VALUES.map((v, i) => {
               const Icon = v.icon;
               return (
                 <StaggerItem key={i}>
-                  <div className="p-8 rounded-card bg-aura-graphite border border-white/5 hover:border-aura-ember/30 transition-all duration-300 h-full flex flex-col justify-between">
-                    <div>
-                      <div className="w-12 h-12 rounded-full bg-aura-black border border-white/10 flex items-center justify-center text-aura-ember mb-6">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <h4 className="font-heading font-bold text-lg text-aura-bone mb-3">
-                        {v.title}
-                      </h4>
-                      <p className="text-sm text-aura-mist leading-relaxed">
-                        {v.desc}
-                      </p>
+                  <div className="p-7 rounded-card bg-aura-canvas border border-black/[0.06] hover:border-black/15 hover:shadow-aura-card-hover transition-all duration-300 h-full shadow-aura-sm">
+                    <div className="w-10 h-10 rounded-full bg-white border border-black/[0.06] flex items-center justify-center text-aura-ember mb-5 shadow-sm">
+                      <Icon className="w-4 h-4" />
                     </div>
+                    <h4 className="font-heading font-bold text-base text-aura-ink mb-2 tracking-tight">{v.title}</h4>
+                    <p className="text-sm text-aura-slate leading-relaxed font-light">{v.desc}</p>
                   </div>
                 </StaggerItem>
               );
@@ -152,36 +94,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Facility Gallery */}
-      <section className="max-w-content mx-auto px-6 md:px-12 mb-24">
-        <Reveal className="mb-12">
-          <div className="text-xs uppercase tracking-widest font-heading text-aura-ember mb-2">
-            The Facility
-          </div>
-          <h2 className="font-heading font-black text-3xl sm:text-5xl text-aura-bone tracking-tight">
-            Curated Performance Zones
-          </h2>
+      {/* Gallery with User Photos */}
+      <section className="max-w-content mx-auto px-6 md:px-12">
+        <Reveal className="mb-10">
+          <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-2">The Facility</div>
+          <h2 className="font-heading font-bold text-3xl sm:text-5xl text-aura-ink tracking-[-0.03em]">Performance Zones</h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {GALLERY_IMAGES.map((img, i) => (
-            <Reveal key={i} delay={i * 0.15}>
-              <div className="group relative h-[340px] rounded-card overflow-hidden border border-white/5 bg-aura-graphite cursor-pointer">
-                <Image
-                  src={img.url}
-                  alt={img.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-aura-black via-aura-black/20 to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h4 className="font-heading font-bold text-xl text-aura-bone group-hover:text-aura-ember transition-colors">
-                    {img.title}
-                  </h4>
-                  <p className="text-xs font-mono text-aura-mist mt-1">
-                    {img.subtitle}
-                  </p>
+            <Reveal key={i} delay={i * 0.1}>
+              <div className="group relative h-[320px] rounded-card overflow-hidden border border-black/[0.06] bg-white cursor-pointer shadow-aura-card hover:shadow-aura-card-hover transition-all duration-300">
+                <Image src={img.url} alt={img.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 50vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5">
+                  <h4 className="font-heading font-bold text-lg text-white group-hover:text-aura-ember transition-colors tracking-tight">{img.title}</h4>
+                  <p className="text-xs text-white/80 mt-0.5 font-light">{img.subtitle}</p>
                 </div>
               </div>
             </Reveal>

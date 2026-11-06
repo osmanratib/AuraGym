@@ -36,22 +36,22 @@ export default function Navbar() {
       className={clsx(
         'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
         isScrolled
-          ? 'bg-aura-black/85 backdrop-blur-md border-b border-white/5 py-4 shadow-xl'
-          : 'bg-transparent py-6'
+          ? 'bg-white/85 backdrop-blur-md border-b border-black/[0.06] py-3.5 shadow-sm'
+          : 'bg-transparent py-5'
       )}
     >
       <div className="max-w-content mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-full bg-aura-ember flex items-center justify-center font-heading font-black text-aura-black text-sm shadow-aura-glow transition-transform duration-300 group-hover:scale-105">
+          <div className="w-7 h-7 rounded-full bg-aura-ink flex items-center justify-center font-heading font-black text-white text-xs group-hover:bg-aura-ember transition-colors duration-300">
             A
           </div>
-          <span className="font-heading font-bold text-xl tracking-tight text-aura-bone">
-            AURA<span className="text-aura-ember font-light">GYM</span>
+          <span className="font-heading font-bold text-lg tracking-[-0.04em] text-aura-ink">
+            AURA<span className="text-aura-ember ml-0.5">.</span>
           </span>
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href;
@@ -60,13 +60,13 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={clsx(
-                  'text-xs uppercase tracking-widest font-heading transition-colors duration-200 relative py-1',
-                  isActive ? 'text-aura-ember' : 'text-aura-mist hover:text-aura-bone'
+                  'text-[11px] uppercase tracking-[0.18em] font-heading font-semibold transition-colors duration-200 relative py-1',
+                  isActive ? 'text-aura-ember' : 'text-aura-slate hover:text-aura-ink'
                 )}
               >
                 {link.name}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-aura-ember rounded-full shadow-aura-glow" />
+                  <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-aura-ember rounded-full" />
                 )}
               </Link>
             );
@@ -74,16 +74,16 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop Actions */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
           {user ? (
-            <div className="flex items-center gap-3">
-              <Button href="/dashboard" variant="secondary" size="sm" className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
+              <Button href="/dashboard" variant="secondary" size="sm" className="flex items-center gap-1.5">
                 <UserIcon className="w-3.5 h-3.5 text-aura-ember" />
                 <span>Dashboard</span>
               </Button>
               <button
                 onClick={signout}
-                className="p-2 text-aura-mist hover:text-aura-ember transition-colors rounded-full hover:bg-white/5"
+                className="p-2 text-aura-slate hover:text-aura-ink hover:bg-black/5 rounded-full transition-colors"
                 title="Sign Out"
                 aria-label="Sign out"
               >
@@ -91,34 +91,34 @@ export default function Navbar() {
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Link
                 href="/signin"
-                className="text-xs uppercase tracking-wider font-heading text-aura-bone hover:text-aura-ember transition-colors px-3 py-2"
+                className="text-[11px] uppercase tracking-[0.16em] font-heading font-semibold text-aura-ink hover:text-aura-ember transition-colors px-2 py-1"
               >
                 Sign In
               </Link>
               <Button href="/contact" variant="primary" size="sm">
-                Claim Free Trial
+                Claim Trial Pass
               </Button>
             </div>
           )}
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 text-aura-bone hover:text-aura-ember transition-colors"
+          className="lg:hidden p-2 text-aura-ink hover:text-aura-ember transition-colors"
           aria-label="Toggle menu"
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[70px] bg-aura-black/95 backdrop-blur-xl border-b border-white/10 px-6 py-8 flex flex-col gap-6 shadow-2xl">
-          <nav className="flex flex-col gap-4">
+        <div className="lg:hidden fixed inset-x-0 top-[62px] bg-white/95 backdrop-blur-xl border-b border-black/[0.08] px-6 py-6 flex flex-col gap-5 shadow-xl">
+          <nav className="flex flex-col gap-3">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -127,8 +127,8 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setIsOpen(false)}
                   className={clsx(
-                    'text-base uppercase tracking-widest font-heading transition-colors py-2 border-b border-white/5',
-                    isActive ? 'text-aura-ember font-bold' : 'text-aura-mist hover:text-aura-bone'
+                    'text-sm uppercase tracking-[0.16em] font-heading font-semibold transition-colors py-2 border-b border-black/[0.04]',
+                    isActive ? 'text-aura-ember font-bold' : 'text-aura-slate hover:text-aura-ink'
                   )}
                 >
                   {link.name}
@@ -137,11 +137,11 @@ export default function Navbar() {
             })}
           </nav>
 
-          <div className="pt-2 flex flex-col gap-3">
+          <div className="pt-2 flex flex-col gap-2.5">
             {user ? (
               <>
                 <Button href="/dashboard" variant="secondary" onClick={() => setIsOpen(false)}>
-                  Go to Member Dashboard
+                  Go to Dashboard
                 </Button>
                 <Button variant="ghost" onClick={() => { setIsOpen(false); signout(); }}>
                   Sign Out
@@ -150,10 +150,10 @@ export default function Navbar() {
             ) : (
               <>
                 <Button href="/signin" variant="secondary" onClick={() => setIsOpen(false)}>
-                  Member Sign In
+                  Sign In
                 </Button>
                 <Button href="/contact" variant="primary" onClick={() => setIsOpen(false)}>
-                  Claim Free Trial
+                  Claim Trial Pass
                 </Button>
               </>
             )}

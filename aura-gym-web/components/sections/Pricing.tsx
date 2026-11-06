@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Check, Sparkles } from 'lucide-react';
+import { Check } from 'lucide-react';
 import clsx from 'clsx';
 import Reveal from '../motion/Reveal';
 import Button from '../ui/Button';
@@ -12,13 +12,13 @@ export const PLANS_DATA = [
     name: 'Essential',
     priceMonthly: 59,
     priceYearly: 590,
-    desc: 'Unrestricted access to the performance floor and essential wellness amenities.',
+    desc: 'Unrestricted floor access and essential wellness amenities.',
     features: [
-      'Full gym floor & cardio deck access',
-      'Locker room & Finnish sauna access',
-      '1 Complimentary fitness assessment',
+      'Full gym floor & cardio deck',
+      'Locker room & sauna access',
+      'Complimentary fitness assessment',
       'Standard mobile app scheduling',
-      'Electrolyte & filtered water station',
+      'Filtered water station',
     ],
     isPopular: false,
   },
@@ -27,14 +27,14 @@ export const PLANS_DATA = [
     name: 'Black Tier',
     priceMonthly: 119,
     priceYearly: 1190,
-    desc: 'The complete athletic experience including unlimited group conditioning and priority recovery.',
+    desc: 'Complete athletic experience with unlimited group conditioning.',
     features: [
       'Everything in Essential',
-      'Unlimited group conditioning & HIIT classes',
+      'Unlimited group & HIIT classes',
       'Dedicated member concierge',
       'Guest passes (2 per month)',
-      'Eucalyptus towel & laundry service',
-      'Smoothie bar & recovery lounge discount (15%)',
+      'Towel & laundry service',
+      'Smoothie bar discount (15%)',
     ],
     isPopular: true,
   },
@@ -43,14 +43,14 @@ export const PLANS_DATA = [
     name: 'Private Athlete',
     priceMonthly: 249,
     priceYearly: 2490,
-    desc: 'Bespoke individual coaching, private biometric analysis, and exclusive recovery suites.',
+    desc: 'Bespoke individual coaching and exclusive recovery suites.',
     features: [
       'Everything in Black Tier',
-      'Weekly 1-on-1 private coaching sessions',
-      'Biometric metabolic tracking & nutrition plan',
-      'Private cryotherapy & infrared recovery suite',
+      'Weekly 1-on-1 private coaching',
+      'Biometric tracking & nutrition plan',
+      'Private cryotherapy & recovery suite',
       'Unlimited guest privileges',
-      'Reserved luxury locker with personalized engraving',
+      'VIP locker with engraving',
     ],
     isPopular: false,
   },
@@ -60,93 +60,88 @@ export default function PricingSection() {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <section className="py-24 md:py-32 bg-[#0e0e12] relative">
+    <section className="py-24 md:py-32 bg-aura-subtle relative border-t border-black/[0.06]">
       <div className="max-w-content mx-auto px-6 md:px-12">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        {/* Header */}
+        <div className="text-center max-w-xl mx-auto mb-14">
           <Reveal>
-            <div className="text-xs uppercase tracking-widest font-heading text-aura-ember mb-3 inline-flex items-center gap-2">
-              <span className="w-6 h-[1px] bg-aura-ember" />
-              <span>Investment</span>
-              <span className="w-6 h-[1px] bg-aura-ember" />
+            <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-3">
+              Membership
             </div>
-            <h2 className="font-heading font-black text-3xl sm:text-5xl text-aura-bone tracking-tight mb-4">
-              Membership Tiers
+            <h2 className="font-heading font-bold text-3xl sm:text-5xl text-aura-ink tracking-[-0.03em] mb-4">
+              Transparent Pricing
             </h2>
-            <p className="text-aura-mist text-sm sm:text-base leading-relaxed">
-              Transparent access to world-class coaching, equipment, and restoration facilities with zero hidden fees.
+            <p className="text-aura-slate text-sm sm:text-base leading-relaxed font-light">
+              World-class coaching, equipment, and restoration — zero hidden fees.
             </p>
           </Reveal>
 
-          {/* Billing Frequency Toggle */}
-          <Reveal delay={0.2} className="mt-8 inline-flex items-center p-1.5 rounded-full bg-aura-graphite border border-white/10">
+          {/* Toggle */}
+          <Reveal delay={0.15} className="mt-7 inline-flex items-center p-1 rounded-full bg-white border border-black/[0.08] shadow-aura-sm">
             <button
               onClick={() => setIsYearly(false)}
               className={clsx(
-                'px-5 py-2 rounded-full text-xs font-heading uppercase tracking-wider transition-all duration-300',
-                !isYearly ? 'bg-aura-ember text-aura-black font-bold shadow-aura-glow' : 'text-aura-mist hover:text-aura-bone'
+                'px-5 py-2 rounded-full text-[11px] font-heading font-semibold uppercase tracking-[0.14em] transition-all duration-200',
+                !isYearly ? 'bg-aura-ink text-white shadow-sm' : 'text-aura-slate hover:text-aura-ink'
               )}
             >
-              Monthly Billing
+              Monthly
             </button>
             <button
               onClick={() => setIsYearly(true)}
               className={clsx(
-                'px-5 py-2 rounded-full text-xs font-heading uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5',
-                isYearly ? 'bg-aura-ember text-aura-black font-bold shadow-aura-glow' : 'text-aura-mist hover:text-aura-bone'
+                'px-5 py-2 rounded-full text-[11px] font-heading font-semibold uppercase tracking-[0.14em] transition-all duration-200 flex items-center gap-1.5',
+                isYearly ? 'bg-aura-ink text-white shadow-sm' : 'text-aura-slate hover:text-aura-ink'
               )}
             >
               <span>Annual</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-aura-black/40 text-aura-bone font-mono">Save 18%</span>
+              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-aura-ember text-white font-bold">-18%</span>
             </button>
           </Reveal>
         </div>
 
-        {/* Plan Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        {/* Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {PLANS_DATA.map((plan, i) => {
             const price = isYearly ? Math.round(plan.priceYearly / 12) : plan.priceMonthly;
 
             return (
-              <Reveal key={plan.id} delay={i * 0.15} className="flex">
+              <Reveal key={plan.id} delay={i * 0.1} className="flex">
                 <div
                   className={clsx(
-                    'relative w-full rounded-card p-8 flex flex-col justify-between transition-all duration-300 bg-aura-graphite border',
+                    'relative w-full rounded-card p-7 flex flex-col justify-between transition-all duration-300 bg-white border shadow-aura-card',
                     plan.isPopular
-                      ? 'border-aura-ember shadow-aura-glow ring-1 ring-aura-ember/50'
-                      : 'border-white/5 hover:border-white/15'
+                      ? 'border-aura-ember shadow-aura-glow ring-1 ring-aura-ember/20'
+                      : 'border-black/[0.06] hover:border-black/15 hover:shadow-aura-card-hover'
                   )}
                 >
                   {plan.isPopular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-aura-ember text-aura-black text-[10px] font-heading font-black uppercase tracking-widest flex items-center gap-1 shadow-aura-glow">
-                      <Sparkles className="w-3 h-3" />
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-aura-ember text-white text-[10px] font-heading font-bold uppercase tracking-[0.18em] shadow-aura-glow">
                       Most Popular
                     </div>
                   )}
 
                   <div>
-                    <h3 className="font-heading font-bold text-2xl text-aura-bone mb-2">
+                    <h3 className="font-heading font-bold text-xl text-aura-ink mb-1 tracking-tight">
                       {plan.name}
                     </h3>
-                    <p className="text-xs text-aura-mist leading-relaxed mb-6">
+                    <p className="text-xs text-aura-slate leading-relaxed mb-5 font-light">
                       {plan.desc}
                     </p>
 
-                    <div className="flex items-baseline gap-1 mb-8 pb-6 border-b border-white/5">
-                      <span className="text-sm text-aura-mist font-mono">$</span>
-                      <span className="font-heading font-black text-5xl text-aura-bone tracking-tight">
+                    <div className="flex items-baseline gap-0.5 mb-7 pb-5 border-b border-black/[0.06]">
+                      <span className="text-sm text-aura-slate font-mono">$</span>
+                      <span className="font-heading font-bold text-[2.75rem] text-aura-ink tracking-tighter leading-none">
                         {price}
                       </span>
-                      <span className="text-xs text-aura-mist font-mono uppercase tracking-widest ml-1">
-                        / month
-                      </span>
+                      <span className="text-xs text-aura-slate ml-1 font-heading uppercase tracking-wider">/mo</span>
                     </div>
 
-                    <ul className="space-y-3.5 mb-8">
-                      {plan.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-aura-mist">
+                    <ul className="space-y-3 mb-7">
+                      {plan.features.map((feat, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5 text-sm text-aura-slate">
                           <Check className="w-4 h-4 text-aura-ember shrink-0 mt-0.5" />
-                          <span>{feature}</span>
+                          <span>{feat}</span>
                         </li>
                       ))}
                     </ul>
@@ -154,7 +149,7 @@ export default function PricingSection() {
 
                   <Button
                     href={`/signup?plan=${plan.id}`}
-                    variant={plan.isPopular ? 'primary' : 'secondary'}
+                    variant={plan.isPopular ? 'ember' : 'secondary'}
                     size="md"
                     className="w-full"
                   >

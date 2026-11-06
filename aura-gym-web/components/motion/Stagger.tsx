@@ -12,8 +12,8 @@ interface StaggerContainerProps {
 
 export function StaggerContainer({
   children,
-  staggerChildren = 0.12,
-  delayChildren = 0,
+  staggerChildren = 0.08,
+  delayChildren = 0.05,
   className,
 }: StaggerContainerProps) {
   const prefersReduced = useReducedMotion();
@@ -34,7 +34,7 @@ export function StaggerContainer({
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={{ once: true, margin: '-60px' }}
       className={className}
     >
       {children}
@@ -52,13 +52,13 @@ export function StaggerItem({
   const prefersReduced = useReducedMotion();
 
   const itemVariants = {
-    hidden: { opacity: 0, y: prefersReduced ? 0 : 30 },
+    hidden: { opacity: 0, y: prefersReduced ? 0 : 22 },
     show: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: prefersReduced ? 0.3 : 0.7,
-        ease: [0.22, 1, 0.36, 1],
+        duration: prefersReduced ? 0.25 : 0.55,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };

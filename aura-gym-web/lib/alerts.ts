@@ -1,4 +1,4 @@
-import Swal, { SweetAlertOptions } from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 const defaultCustomClass = {
   popup: 'aura-swal-popup',
@@ -13,9 +13,9 @@ export const AuraAlert = {
       icon: 'success',
       title,
       text,
-      background: '#17171B',
-      color: '#F4F1EA',
-      iconColor: '#FF5A1F',
+      background: '#FFFFFF',
+      color: '#111114',
+      iconColor: '#FF521B',
       confirmButtonText: 'Continue',
       customClass: defaultCustomClass,
       buttonsStyling: false,
@@ -27,10 +27,10 @@ export const AuraAlert = {
       icon: 'error',
       title,
       text,
-      background: '#17171B',
-      color: '#F4F1EA',
-      iconColor: '#FF5A1F',
-      confirmButtonText: 'Got It',
+      background: '#FFFFFF',
+      color: '#111114',
+      iconColor: '#FF521B',
+      confirmButtonText: 'Understood',
       customClass: defaultCustomClass,
       buttonsStyling: false,
     });
@@ -44,9 +44,9 @@ export const AuraAlert = {
       showCancelButton: true,
       confirmButtonText,
       cancelButtonText: 'Cancel',
-      background: '#17171B',
-      color: '#F4F1EA',
-      iconColor: '#FF5A1F',
+      background: '#FFFFFF',
+      color: '#111114',
+      iconColor: '#FF521B',
       customClass: defaultCustomClass,
       buttonsStyling: false,
       reverseButtons: true,

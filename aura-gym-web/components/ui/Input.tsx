@@ -18,7 +18,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-xs font-semibold uppercase tracking-wider text-aura-mist"
+            className="block text-[11px] font-heading font-semibold uppercase tracking-[0.14em] text-aura-slate"
           >
             {label}
           </label>
@@ -27,14 +27,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={clsx(
-            'w-full bg-[#121215] border border-white/10 rounded-xl px-4 py-3 text-aura-bone placeholder:text-aura-mist/40 text-sm transition-all duration-200 outline-none focus:border-aura-ember focus:ring-1 focus:ring-aura-ember',
-            error && 'border-red-500/80 focus:border-red-500 focus:ring-red-500/50',
+            'w-full bg-[#FAF9F6] border border-black/10 rounded-xl px-4 py-3 text-aura-ink placeholder:text-aura-mist text-sm transition-all duration-200 outline-none focus:bg-white focus:border-aura-ember focus:ring-1 focus:ring-aura-ember shadow-sm',
+            error && 'border-red-500 focus:border-red-500 focus:ring-red-500',
             className
           )}
           {...props}
         />
-        {error && <p className="text-xs text-red-400 mt-1">{error}</p>}
-        {helperText && !error && <p className="text-xs text-aura-mist/60 mt-1">{helperText}</p>}
+        {error && <p className="text-xs text-red-600 mt-1">{error}</p>}
+        {helperText && !error && <p className="text-xs text-aura-slate mt-1">{helperText}</p>}
       </div>
     );
   }

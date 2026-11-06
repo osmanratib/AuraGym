@@ -2,118 +2,119 @@
 
 import React from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const HeroScene = dynamic(() => import('../three/HeroScene'), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full flex items-center justify-center">
-      <div className="w-64 h-64 rounded-full bg-gradient-to-tr from-aura-ember/20 to-aura-glow/10 blur-3xl animate-pulse" />
+      <div className="w-48 h-48 rounded-full bg-gradient-to-tr from-aura-ember/10 to-transparent blur-2xl animate-pulse" />
     </div>
   ),
 });
 
 export default function Hero() {
-  const headlineWords = ['ENGINEERED', 'FOR', 'PEAK', 'PHYSICAL', 'DOMINANCE'];
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16">
-      {/* Background radial atmosphere */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-b from-aura-ember/10 via-aura-glow/5 to-transparent blur-[120px] pointer-events-none" />
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
+      {/* Soft warm gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFF8F2] via-aura-canvas to-aura-canvas pointer-events-none" />
 
-      {/* 3D Scene Canvas in Background / Center */}
-      <div className="absolute inset-0 z-0 opacity-85">
-        <HeroScene />
-      </div>
+      <div className="max-w-content mx-auto px-6 md:px-12 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-4 items-center py-16 lg:py-0">
+        {/* Left: Content */}
+        <div className="order-2 lg:order-1 flex flex-col items-start">
+          {/* Minimal tag */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-black/[0.08] shadow-aura-sm mb-8"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-aura-ember" />
+            <span className="text-[11px] font-heading font-semibold uppercase tracking-[0.18em] text-aura-slate">
+              Athletic Performance Sanctuary
+            </span>
+          </motion.div>
 
-      {/* Grid Pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="font-heading font-bold text-[2.75rem] sm:text-6xl md:text-7xl tracking-[-0.04em] leading-[1.05] text-aura-ink max-w-xl mb-6"
+          >
+            Engineered for
+            <br />
+            <span className="text-aura-ember">peak form.</span>
+          </motion.h1>
 
-      <div className="max-w-content mx-auto px-6 md:px-12 relative z-10 w-full text-center flex flex-col items-center">
-        {/* Top Tag */}
+          {/* Sub copy */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-base sm:text-lg text-aura-slate max-w-md leading-relaxed mb-10 font-light"
+          >
+            Precision coaching, calibrated biomechanics, and restorative recovery — fused into an uncompromising athletic experience.
+          </motion.p>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-3"
+          >
+            <Button href="/contact" variant="primary" size="lg" className="group">
+              <span>Claim Free Trial</span>
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" />
+            </Button>
+            <Button href="/programs" variant="secondary" size="lg">
+              Explore Programs
+            </Button>
+          </motion.div>
+        </div>
+
+        {/* Right: 3D Scene + Photo Collage */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-aura-ember/30 bg-aura-graphite/60 backdrop-blur-md mb-8"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="order-1 lg:order-2 relative h-[420px] sm:h-[500px] lg:h-[600px] w-full"
         >
-          <Sparkles className="w-3.5 h-3.5 text-aura-ember animate-spin-slow" />
-          <span className="text-[11px] font-heading uppercase tracking-widest text-aura-bone">
-            Private Athletic Performance Sanctuary
-          </span>
-        </motion.div>
+          {/* 3D Scene */}
+          <div className="absolute inset-0 z-10">
+            <HeroScene />
+          </div>
 
-        {/* Staggered Rising Headline */}
-        <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.95] text-aura-bone max-w-4xl mb-6">
-          {headlineWords.map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.15 + i * 0.08,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className={i === 0 || i === 4 ? 'inline-block text-aura-bone mr-3' : 'inline-block text-aura-mist/90 mr-3'}
-            >
-              {word === 'DOMINANCE' ? (
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-aura-ember via-aura-glow to-aura-bone">
-                  {word}
-                </span>
-              ) : (
-                word
-              )}
-            </motion.span>
-          ))}
-        </h1>
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-base sm:text-lg md:text-xl text-aura-mist max-w-2xl font-normal leading-relaxed mb-10"
-        >
-          Transcend ordinary training. Aura Gym fuses cutting-edge bio-mechanics, high-performance coaching, and restorative recovery protocols into an uncompromising sensory experience.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
-        >
-          <Button href="/contact" size="lg" className="w-full sm:w-auto group">
-            <span>Claim Your 1-Day Trial</span>
-            <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-          </Button>
-
-          <Button href="/programs" variant="secondary" size="lg" className="w-full sm:w-auto">
-            Explore Programs
-          </Button>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
-          className="mt-16 md:mt-24 flex flex-col items-center gap-2 text-aura-mist/60 text-xs tracking-widest font-heading uppercase"
-        >
-          <span>Scroll to Explore</span>
-          <div className="w-5 h-8 border border-white/20 rounded-full flex justify-center p-1">
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-              className="w-1 h-2 bg-aura-ember rounded-full"
-            />
+          {/* Photo accent cards floating behind */}
+          <div className="absolute top-8 right-0 w-44 h-56 rounded-2xl overflow-hidden border border-black/[0.06] shadow-aura-card opacity-70 z-0 rotate-3">
+            <Image src="/images/athlete-back.jpg" alt="Athlete" fill className="object-cover" sizes="180px" />
+          </div>
+          <div className="absolute bottom-4 left-0 w-36 h-48 rounded-2xl overflow-hidden border border-black/[0.06] shadow-aura-card opacity-60 z-0 -rotate-2">
+            <Image src="/images/weights-floor.jpg" alt="Equipment" fill className="object-cover" sizes="150px" />
           </div>
         </motion.div>
       </div>
+
+      {/* Scroll hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.0, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-aura-mist z-10"
+      >
+        <span className="text-[10px] uppercase tracking-[0.25em] font-heading">Scroll</span>
+        <div className="w-5 h-7 border border-black/15 rounded-full flex justify-center pt-1.5">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.4, ease: 'easeInOut' }}
+            className="w-1 h-1.5 bg-aura-ember rounded-full"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }

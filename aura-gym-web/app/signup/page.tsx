@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -63,51 +64,54 @@ function SignupForm() {
   };
 
   return (
-    <div className="min-h-screen pt-28 pb-16 flex items-center justify-center bg-aura-black px-6 md:px-12">
-      <div className="w-full max-w-5xl bg-aura-graphite border border-white/10 rounded-card overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12 min-h-[620px]">
-        {/* Left Ambient Side */}
-        <div className="lg:col-span-5 bg-[#0e0e12] p-8 md:p-12 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-aura-ember/15 blur-3xl pointer-events-none rounded-full" />
+    <div className="min-h-screen pt-24 pb-16 flex items-center justify-center bg-aura-canvas px-6 md:px-12">
+      <div className="w-full max-w-4xl bg-white border border-black/[0.08] rounded-[24px] overflow-hidden shadow-aura-card-hover grid grid-cols-1 lg:grid-cols-12 min-h-[580px]">
+        {/* Left Side: Photo & Brand Panel */}
+        <div className="lg:col-span-5 relative overflow-hidden bg-aura-ink text-white p-8 md:p-10 flex flex-col justify-between">
+          <Image
+            src="/images/athlete-back.jpg"
+            alt="Athlete Training"
+            fill
+            className="object-cover opacity-40 mix-blend-luminosity"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-aura-ink via-aura-ink/60 to-transparent" />
 
-          <div>
-            <div className="w-10 h-10 rounded-full bg-aura-ember flex items-center justify-center font-heading font-black text-aura-black text-base shadow-aura-glow mb-8">
+          <div className="relative z-10">
+            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center font-heading font-black text-aura-ink text-xs mb-6">
               A
             </div>
-            <div className="text-xs uppercase tracking-widest font-heading text-aura-ember mb-2">
+            <div className="text-[10px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-2">
               Membership Enlistment
             </div>
-            <h2 className="font-heading font-black text-3xl sm:text-4xl text-aura-bone tracking-tight leading-tight">
-              Begin Your Evolution.
+            <h2 className="font-heading font-bold text-2xl sm:text-3xl text-white tracking-[-0.03em] leading-tight">
+              Begin your athletic evolution.
             </h2>
           </div>
 
-          <div className="relative z-10 space-y-3 pt-8 text-xs text-aura-mist">
-            <div className="flex items-center gap-2 text-aura-bone font-mono">
-              <ShieldCheck className="w-4 h-4 text-aura-ember" />
-              <span>Full Access to Member App & Bookings</span>
+          <div className="relative z-10 pt-8 text-xs text-white/70 space-y-2 font-light">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-aura-ember shrink-0" />
+              <span>Full Access to Member App & Floor Schedule</span>
             </div>
-            <div className="flex items-center gap-2 text-aura-bone font-mono">
-              <ShieldCheck className="w-4 h-4 text-aura-ember" />
-              <span>No Annual Locked Contracts</span>
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-aura-ember shrink-0" />
+              <span>No Long-Term Locked Contracts</span>
             </div>
-            <p className="text-aura-mist/60 pt-2">
-              All credentials are cryptographically hashed using salted bcrypt protocols.
-            </p>
           </div>
         </div>
 
-        {/* Right Form Side */}
-        <div className="lg:col-span-7 p-8 md:p-12 flex flex-col justify-center">
+        {/* Right Side: Form */}
+        <div className="lg:col-span-7 p-8 md:p-12 flex flex-col justify-center bg-white">
           <div className="mb-6">
-            <h1 className="font-heading font-black text-2xl sm:text-3xl text-aura-bone tracking-tight">
+            <h1 className="font-heading font-bold text-2xl sm:text-3xl text-aura-ink tracking-tight">
               Create Member Account
             </h1>
-            <p className="text-sm text-aura-mist mt-1">
+            <p className="text-xs sm:text-sm text-aura-slate mt-1 font-light">
               Select your membership tier and enter your registration details.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="relative">
               <Input
                 label="Full Name"
@@ -115,7 +119,7 @@ function SignupForm() {
                 {...register('full_name')}
                 error={errors.full_name?.message}
               />
-              <User className="w-4 h-4 text-aura-mist/40 absolute right-4 top-9 pointer-events-none" />
+              <User className="w-4 h-4 text-aura-mist absolute right-4 top-9 pointer-events-none" />
             </div>
 
             <div className="relative">
@@ -126,7 +130,7 @@ function SignupForm() {
                 {...register('email')}
                 error={errors.email?.message}
               />
-              <Mail className="w-4 h-4 text-aura-mist/40 absolute right-4 top-9 pointer-events-none" />
+              <Mail className="w-4 h-4 text-aura-mist absolute right-4 top-9 pointer-events-none" />
             </div>
 
             <div className="relative">
@@ -137,17 +141,16 @@ function SignupForm() {
                 {...register('password')}
                 error={errors.password?.message}
               />
-              <Lock className="w-4 h-4 text-aura-mist/40 absolute right-4 top-9 pointer-events-none" />
+              <Lock className="w-4 h-4 text-aura-mist absolute right-4 top-9 pointer-events-none" />
             </div>
 
-            {/* Plan Selector */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-aura-mist">
+              <label className="block text-[11px] font-heading font-semibold uppercase tracking-[0.14em] text-aura-slate">
                 Select Membership Tier
               </label>
               <select
                 {...register('plan_id')}
-                className="w-full bg-[#121215] border border-white/10 rounded-xl px-4 py-3 text-aura-bone text-sm outline-none focus:border-aura-ember focus:ring-1 focus:ring-aura-ember transition-all"
+                className="w-full bg-[#FAF9F6] border border-black/10 rounded-xl px-4 py-3 text-aura-ink text-sm outline-none focus:bg-white focus:border-aura-ember focus:ring-1 focus:ring-aura-ember transition-all"
               >
                 {plans.map((p) => (
                   <option key={p.id} value={p.id}>
@@ -161,14 +164,14 @@ function SignupForm() {
               type="submit"
               size="lg"
               isLoading={isLoading}
-              className="w-full shadow-aura-glow mt-2"
+              className="w-full mt-2"
             >
               <span>Complete Enrollment</span>
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-white/5 text-center text-xs text-aura-mist">
+          <div className="mt-6 pt-5 border-t border-black/[0.06] text-center text-xs text-aura-slate">
             Already have an active account?{' '}
             <Link
               href="/signin"
@@ -185,7 +188,7 @@ function SignupForm() {
 
 export default function SignupPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-aura-black" />}>
+    <Suspense fallback={<div className="min-h-screen bg-aura-canvas" />}>
       <SignupForm />
     </Suspense>
   );

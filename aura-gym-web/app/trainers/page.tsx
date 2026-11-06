@@ -6,69 +6,64 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from '@/components/motion/Reveal';
 import { StaggerContainer, StaggerItem } from '@/components/motion/Stagger';
 import Button from '@/components/ui/Button';
-import { X, Award, ChevronRight, Sparkles } from 'lucide-react';
+import { X, Award, ChevronRight } from 'lucide-react';
 import { TRAINERS_DATA } from '@/components/sections/Trainers';
 
 export default function TrainersPage() {
   const [selectedTrainer, setSelectedTrainer] = useState<(typeof TRAINERS_DATA)[0] | null>(null);
 
   return (
-    <div className="pt-32 pb-24 bg-aura-black">
+    <div className="pt-28 pb-24 bg-aura-canvas">
       <div className="max-w-content mx-auto px-6 md:px-12">
         {/* Header */}
-        <Reveal className="mb-16">
-          <div className="text-xs uppercase tracking-widest font-heading text-aura-ember mb-3 flex items-center gap-2">
-            <span className="w-8 h-[1px] bg-aura-ember" />
-            <span>Coaching Roster</span>
+        <Reveal className="mb-14">
+          <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-3 flex items-center gap-3">
+            <span className="w-8 h-[1.5px] bg-aura-ember" />
+            <span>Coaching Faculty</span>
           </div>
-          <h1 className="font-heading font-black text-4xl sm:text-6xl text-aura-bone tracking-tight max-w-3xl mb-6">
-            Elite Coaches. Sports Scientists. Platform Champions.
+          <h1 className="font-heading font-bold text-4xl sm:text-6xl text-aura-ink tracking-[-0.04em] max-w-3xl mb-5 leading-tight">
+            Elite coaches. Sports scientists.
           </h1>
-          <p className="text-lg text-aura-mist max-w-2xl leading-relaxed">
-            Every coach on the Aura Gym floor holds advanced biomechanics certifications, competitive backgrounds, and a personal commitment to your athletic trajectory.
+          <p className="text-base sm:text-lg text-aura-slate max-w-2xl leading-relaxed font-light">
+            Every coach on the Aura Gym floor holds advanced biomechanics credentials, competitive backgrounds, and a personal commitment to your trajectory.
           </p>
         </Reveal>
 
-        {/* Coaches Grid */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Coaches Grid with user photos */}
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {TRAINERS_DATA.map((trainer) => (
             <StaggerItem key={trainer.id}>
               <div
                 onClick={() => setSelectedTrainer(trainer)}
-                className="bg-aura-graphite border border-white/5 rounded-card overflow-hidden group cursor-pointer transition-all duration-300 hover:border-aura-ember/40 hover:shadow-aura-glow flex flex-col h-full"
+                className="bg-white border border-black/[0.06] rounded-card overflow-hidden group cursor-pointer transition-all duration-300 hover:border-black/15 hover:shadow-aura-card-hover hover:-translate-y-1 shadow-aura-card flex flex-col h-full"
               >
                 {/* Image */}
-                <div className="relative h-[360px] w-full overflow-hidden bg-[#121215]">
+                <div className="relative h-[360px] w-full overflow-hidden bg-aura-subtle">
                   <Image
                     src={trainer.image}
                     alt={trainer.name}
                     fill
-                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                    className="object-cover group-hover:scale-105 transition-all duration-500"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-aura-graphite via-transparent to-transparent opacity-90" />
-                  <div className="absolute top-4 right-4">
-                    <span className="p-2 rounded-full bg-aura-black/80 text-aura-ember border border-aura-ember/30 inline-flex items-center justify-center">
-                      <Sparkles className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
                 </div>
 
                 {/* Details */}
                 <div className="p-6 flex flex-col justify-between flex-grow">
                   <div>
-                    <h3 className="font-heading font-bold text-2xl text-aura-bone group-hover:text-aura-ember transition-colors">
+                    <h3 className="font-heading font-bold text-xl text-aura-ink group-hover:text-aura-ember transition-colors tracking-tight">
                       {trainer.name}
                     </h3>
-                    <p className="text-xs uppercase font-mono text-aura-mist mt-1 mb-4">
+                    <p className="text-[11px] uppercase tracking-[0.14em] text-aura-slate mt-0.5 mb-4 font-heading font-medium">
                       {trainer.role}
                     </p>
 
-                    <div className="flex flex-wrap gap-1.5 mb-6">
+                    <div className="flex flex-wrap gap-1.5 mb-5">
                       {trainer.specialties.map((s, idx) => (
                         <span
                           key={idx}
-                          className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-white/5 text-aura-mist border border-white/5"
+                          className="text-[10px] font-heading font-semibold uppercase tracking-[0.14em] px-2.5 py-1 rounded-full bg-aura-subtle text-aura-slate border border-black/[0.04]"
                         >
                           {s}
                         </span>
@@ -76,9 +71,9 @@ export default function TrainersPage() {
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-heading uppercase tracking-widest text-aura-ember group-hover:text-aura-bone transition-colors">
+                  <div className="pt-4 border-t border-black/[0.06] flex items-center justify-between text-[11px] font-heading font-semibold uppercase tracking-[0.14em] text-aura-ember group-hover:text-aura-ink transition-colors">
                     <span>View Specialist Dossier</span>
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </div>
@@ -96,65 +91,64 @@ export default function TrainersPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedTrainer(null)}
-              className="fixed inset-0 bg-aura-black/80 backdrop-blur-sm"
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm"
             />
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-full max-w-md bg-aura-graphite border-l border-white/10 h-full p-8 overflow-y-auto z-10 flex flex-col justify-between"
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-md bg-white border-l border-black/10 h-full p-8 overflow-y-auto z-10 flex flex-col justify-between shadow-2xl"
             >
               <div>
                 <button
                   onClick={() => setSelectedTrainer(null)}
-                  className="p-2 text-aura-mist hover:text-aura-bone rounded-full hover:bg-white/5 transition-colors mb-6"
+                  className="p-2 text-aura-slate hover:text-aura-ink rounded-full hover:bg-black/5 transition-colors mb-5"
                   aria-label="Close bio drawer"
                 >
                   <X className="w-5 h-5" />
                 </button>
 
-                <div className="relative h-64 w-full rounded-xl overflow-hidden mb-6">
+                <div className="relative h-60 w-full rounded-2xl overflow-hidden mb-6 border border-black/[0.06]">
                   <Image
                     src={selectedTrainer.image}
                     alt={selectedTrainer.name}
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-aura-graphite via-transparent to-transparent" />
                 </div>
 
-                <div className="text-xs uppercase tracking-widest text-aura-ember font-mono mb-1">
+                <div className="text-[11px] uppercase tracking-[0.2em] text-aura-ember font-heading font-semibold mb-0.5">
                   Master Specialist
                 </div>
-                <h3 className="font-heading font-black text-2xl text-aura-bone">
+                <h3 className="font-heading font-bold text-2xl text-aura-ink tracking-tight">
                   {selectedTrainer.name}
                 </h3>
-                <p className="text-xs font-mono text-aura-mist mt-1 mb-6">
+                <p className="text-xs text-aura-slate mt-0.5 mb-5 font-heading font-medium uppercase tracking-[0.1em]">
                   {selectedTrainer.role}
                 </p>
 
-                <h4 className="text-xs uppercase tracking-widest font-heading text-aura-bone mb-2">
+                <h4 className="text-[11px] uppercase tracking-[0.2em] font-heading font-semibold text-aura-ink mb-2">
                   Biography & Background
                 </h4>
-                <p className="text-sm text-aura-mist leading-relaxed mb-6">
+                <p className="text-sm text-aura-slate leading-relaxed mb-6 font-light">
                   {selectedTrainer.bio}
                 </p>
 
-                <h4 className="text-xs uppercase tracking-widest font-heading text-aura-bone mb-2">
+                <h4 className="text-[11px] uppercase tracking-[0.2em] font-heading font-semibold text-aura-ink mb-2">
                   Certifications & Credentials
                 </h4>
                 <ul className="space-y-2">
                   {selectedTrainer.certifications.map((c, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-xs text-aura-bone font-mono">
-                      <Award className="w-4 h-4 text-aura-ember shrink-0" />
+                    <li key={idx} className="flex items-center gap-2 text-xs text-aura-ink">
+                      <Award className="w-3.5 h-3.5 text-aura-ember shrink-0" />
                       <span>{c}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="pt-8 mt-8 border-t border-white/5">
+              <div className="pt-6 mt-6 border-t border-black/[0.06]">
                 <Button href="/contact" className="w-full">
                   Request 1-on-1 Consultation
                 </Button>

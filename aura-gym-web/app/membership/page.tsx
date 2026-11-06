@@ -74,29 +74,29 @@ export default function MembershipPage() {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <div className="pt-32 pb-24 bg-aura-black">
+    <div className="pt-28 pb-24 bg-aura-canvas">
       <div className="max-w-content mx-auto px-6 md:px-12">
         {/* Header */}
-        <Reveal className="text-center max-w-2xl mx-auto mb-16">
-          <div className="text-xs uppercase tracking-widest font-heading text-aura-ember mb-3 flex items-center justify-center gap-2">
-            <span className="w-8 h-[1px] bg-aura-ember" />
+        <Reveal className="text-center max-w-2xl mx-auto mb-14">
+          <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-3 flex items-center justify-center gap-3">
+            <span className="w-8 h-[1.5px] bg-aura-ember" />
             <span>Membership Plans</span>
-            <span className="w-8 h-[1px] bg-aura-ember" />
+            <span className="w-8 h-[1.5px] bg-aura-ember" />
           </div>
-          <h1 className="font-heading font-black text-4xl sm:text-6xl text-aura-bone tracking-tight mb-6">
-            Transparent Pricing. Peak Performance.
+          <h1 className="font-heading font-bold text-4xl sm:text-6xl text-aura-ink tracking-[-0.04em] mb-5 leading-tight">
+            Transparent investment.
           </h1>
-          <p className="text-base sm:text-lg text-aura-mist leading-relaxed">
-            Choose the tier tailored to your intensity, scheduling frequency, and recovery requirements.
+          <p className="text-base sm:text-lg text-aura-slate leading-relaxed font-light">
+            Choose the tier tailored to your training frequency and recovery requirements.
           </p>
 
           {/* Toggle */}
-          <div className="mt-8 inline-flex items-center p-1.5 rounded-full bg-aura-graphite border border-white/10">
+          <div className="mt-7 inline-flex items-center p-1 rounded-full bg-white border border-black/[0.08] shadow-aura-sm">
             <button
               onClick={() => setIsYearly(false)}
               className={clsx(
-                'px-6 py-2.5 rounded-full text-xs font-heading uppercase tracking-wider transition-all duration-300',
-                !isYearly ? 'bg-aura-ember text-aura-black font-bold shadow-aura-glow' : 'text-aura-mist hover:text-aura-bone'
+                'px-5 py-2 rounded-full text-[11px] font-heading font-semibold uppercase tracking-[0.14em] transition-all duration-200',
+                !isYearly ? 'bg-aura-ink text-white shadow-sm' : 'text-aura-slate hover:text-aura-ink'
               )}
             >
               Monthly Billing
@@ -104,12 +104,12 @@ export default function MembershipPage() {
             <button
               onClick={() => setIsYearly(true)}
               className={clsx(
-                'px-6 py-2.5 rounded-full text-xs font-heading uppercase tracking-wider transition-all duration-300 flex items-center gap-2',
-                isYearly ? 'bg-aura-ember text-aura-black font-bold shadow-aura-glow' : 'text-aura-mist hover:text-aura-bone'
+                'px-5 py-2 rounded-full text-[11px] font-heading font-semibold uppercase tracking-[0.14em] transition-all duration-200 flex items-center gap-1.5',
+                isYearly ? 'bg-aura-ink text-white shadow-sm' : 'text-aura-slate hover:text-aura-ink'
               )}
             >
               <span>Annual</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-aura-black/40 text-aura-bone font-mono">
+              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-aura-ember text-white font-bold">
                 Save 18%
               </span>
             </button>
@@ -117,48 +117,48 @@ export default function MembershipPage() {
         </Reveal>
 
         {/* 3 Plan Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch mb-28">
           {PLANS_DATA.map((plan, i) => {
             const price = isYearly ? Math.round(plan.priceYearly / 12) : plan.priceMonthly;
 
             return (
-              <Reveal key={plan.id} delay={i * 0.15} className="flex">
+              <Reveal key={plan.id} delay={i * 0.1} className="flex">
                 <div
                   className={clsx(
-                    'relative w-full rounded-card p-8 flex flex-col justify-between transition-all duration-300 bg-aura-graphite border',
+                    'relative w-full rounded-card p-7 flex flex-col justify-between transition-all duration-300 bg-white border shadow-aura-card',
                     plan.isPopular
-                      ? 'border-aura-ember shadow-aura-glow ring-1 ring-aura-ember/50'
-                      : 'border-white/5 hover:border-white/15'
+                      ? 'border-aura-ember shadow-aura-glow ring-1 ring-aura-ember/20'
+                      : 'border-black/[0.06] hover:border-black/15 hover:shadow-aura-card-hover'
                   )}
                 >
                   {plan.isPopular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-aura-ember text-aura-black text-[10px] font-heading font-black uppercase tracking-widest flex items-center gap-1 shadow-aura-glow">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-aura-ember text-white text-[10px] font-heading font-bold uppercase tracking-[0.18em] shadow-aura-glow flex items-center gap-1">
                       <Sparkles className="w-3 h-3" />
                       Most Popular
                     </div>
                   )}
 
                   <div>
-                    <h3 className="font-heading font-bold text-2xl text-aura-bone mb-2">
+                    <h3 className="font-heading font-bold text-xl text-aura-ink mb-1 tracking-tight">
                       {plan.name}
                     </h3>
-                    <p className="text-xs text-aura-mist leading-relaxed mb-6">
+                    <p className="text-xs text-aura-slate leading-relaxed mb-5 font-light">
                       {plan.desc}
                     </p>
 
-                    <div className="flex items-baseline gap-1 mb-8 pb-6 border-b border-white/5">
-                      <span className="text-sm text-aura-mist font-mono">$</span>
-                      <span className="font-heading font-black text-5xl text-aura-bone tracking-tight">
+                    <div className="flex items-baseline gap-0.5 mb-7 pb-5 border-b border-black/[0.06]">
+                      <span className="text-sm text-aura-slate font-mono">$</span>
+                      <span className="font-heading font-bold text-[2.75rem] text-aura-ink tracking-tighter leading-none">
                         {price}
                       </span>
-                      <span className="text-xs text-aura-mist font-mono uppercase tracking-widest ml-1">
+                      <span className="text-xs text-aura-slate ml-1 font-heading uppercase tracking-wider">
                         / month
                       </span>
                     </div>
 
-                    <ul className="space-y-3.5 mb-8">
+                    <ul className="space-y-3 mb-7">
                       {plan.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-aura-mist">
+                        <li key={idx} className="flex items-start gap-2.5 text-sm text-aura-slate">
                           <Check className="w-4 h-4 text-aura-ember shrink-0 mt-0.5" />
                           <span>{feature}</span>
                         </li>
@@ -168,7 +168,7 @@ export default function MembershipPage() {
 
                   <Button
                     href={`/signup?plan=${plan.id}`}
-                    variant={plan.isPopular ? 'primary' : 'secondary'}
+                    variant={plan.isPopular ? 'ember' : 'secondary'}
                     size="md"
                     className="w-full"
                   >
@@ -181,78 +181,78 @@ export default function MembershipPage() {
         </div>
 
         {/* Comparison Table */}
-        <section className="mb-32">
-          <Reveal className="mb-10 text-center md:text-left">
-            <h2 className="font-heading font-black text-2xl sm:text-4xl text-aura-bone tracking-tight">
-              Detailed Feature Matrix
+        <section className="mb-28">
+          <Reveal className="mb-8 text-center md:text-left">
+            <h2 className="font-heading font-bold text-2xl sm:text-4xl text-aura-ink tracking-[-0.03em]">
+              Feature Matrix
             </h2>
-            <p className="text-sm text-aura-mist mt-1">
-              Side-by-side technical breakdown of entitlements and coaching tiers.
+            <p className="text-sm text-aura-slate mt-1 font-light">
+              Detailed technical breakdown of entitlements and coaching tiers.
             </p>
           </Reveal>
 
-          <div className="overflow-x-auto border border-white/5 rounded-card bg-aura-graphite shadow-2xl">
+          <div className="overflow-x-auto border border-black/[0.06] rounded-card bg-white shadow-aura-card">
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-white/10 bg-[#121215]">
-                  <th className="p-5 font-heading text-xs uppercase tracking-wider text-aura-bone w-2/5">
+                <tr className="border-b border-black/[0.06] bg-aura-subtle">
+                  <th className="p-4 font-heading text-xs uppercase tracking-wider text-aura-ink w-2/5">
                     Tier Feature
                   </th>
-                  <th className="p-5 font-heading text-xs uppercase tracking-wider text-aura-mist text-center w-1/5">
+                  <th className="p-4 font-heading text-xs uppercase tracking-wider text-aura-slate text-center w-1/5">
                     Essential
                   </th>
-                  <th className="p-5 font-heading text-xs uppercase tracking-wider text-aura-ember text-center w-1/5">
+                  <th className="p-4 font-heading text-xs uppercase tracking-wider text-aura-ember text-center w-1/5">
                     Black Tier
                   </th>
-                  <th className="p-5 font-heading text-xs uppercase tracking-wider text-aura-bone text-center w-1/5">
+                  <th className="p-4 font-heading text-xs uppercase tracking-wider text-aura-ink text-center w-1/5">
                     Private Athlete
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 font-mono text-xs">
+              <tbody className="divide-y divide-black/[0.06] text-xs">
                 {COMPARISON_FEATURES.map((group, gIdx) => (
                   <React.Fragment key={gIdx}>
-                    <tr className="bg-[#141418]/60">
-                      <td colSpan={4} className="p-3.5 px-5 font-heading text-xs uppercase tracking-widest text-aura-ember">
+                    <tr className="bg-aura-canvas">
+                      <td colSpan={4} className="p-3 px-5 font-heading text-[11px] font-semibold uppercase tracking-[0.16em] text-aura-ember">
                         {group.category}
                       </td>
                     </tr>
                     {group.items.map((row, rIdx) => (
-                      <tr key={rIdx} className="hover:bg-white/[0.02] transition-colors">
-                        <td className="p-4 px-5 text-aura-bone font-sans text-sm">
+                      <tr key={rIdx} className="hover:bg-aura-subtle/50 transition-colors">
+                        <td className="p-3.5 px-5 text-aura-ink font-sans text-sm">
                           {row.name}
                         </td>
-                        <td className="p-4 text-center">
+                        <td className="p-3.5 text-center">
                           {typeof row.essential === 'boolean' ? (
                             row.essential ? (
                               <Check className="w-4 h-4 text-aura-ember mx-auto" />
                             ) : (
-                              <Minus className="w-4 h-4 text-aura-mist/40 mx-auto" />
+                              <Minus className="w-4 h-4 text-aura-mist mx-auto" />
                             )
                           ) : (
-                            <span className="text-aura-mist">{row.essential}</span>
+                            <span className="text-aura-slate">{row.essential}</span>
                           )}
                         </td>
-                        <td className="p-4 text-center bg-aura-ember/5">
+                        <td className="p-3.5 text-center bg-aura-ember/5">
                           {typeof row.black === 'boolean' ? (
                             row.black ? (
                               <Check className="w-4 h-4 text-aura-ember mx-auto" />
                             ) : (
-                              <Minus className="w-4 h-4 text-aura-mist/40 mx-auto" />
+                              <Minus className="w-4 h-4 text-aura-mist mx-auto" />
                             )
                           ) : (
-                            <span className="text-aura-bone font-bold">{row.black}</span>
+                            <span className="text-aura-ink font-semibold">{row.black}</span>
                           )}
                         </td>
-                        <td className="p-4 text-center">
+                        <td className="p-3.5 text-center">
                           {typeof row.athlete === 'boolean' ? (
                             row.athlete ? (
                               <Check className="w-4 h-4 text-aura-ember mx-auto" />
                             ) : (
-                              <Minus className="w-4 h-4 text-aura-mist/40 mx-auto" />
+                              <Minus className="w-4 h-4 text-aura-mist mx-auto" />
                             )
                           ) : (
-                            <span className="text-aura-bone font-bold">{row.athlete}</span>
+                            <span className="text-aura-ink font-semibold">{row.athlete}</span>
                           )}
                         </td>
                       </tr>
@@ -266,11 +266,11 @@ export default function MembershipPage() {
 
         {/* FAQ Accordion */}
         <section className="max-w-3xl mx-auto">
-          <Reveal className="text-center mb-12">
-            <div className="text-xs uppercase tracking-widest font-heading text-aura-ember mb-2">
-              Common Inquiries
+          <Reveal className="text-center mb-10">
+            <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-2">
+              Common Questions
             </div>
-            <h2 className="font-heading font-black text-3xl sm:text-4xl text-aura-bone tracking-tight">
+            <h2 className="font-heading font-bold text-3xl sm:text-4xl text-aura-ink tracking-[-0.03em]">
               Frequently Asked Questions
             </h2>
           </Reveal>
