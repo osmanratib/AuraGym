@@ -75,7 +75,7 @@ Copy `aura-gym-api/.env.example` to `aura-gym-api/.env` and supply:
 ```env
 PORT=5000
 NODE_ENV=development
-CLIENT_URL=http://localhost:3000
+CLIENT_URL=(https://aura-gym-teal.vercel.app/)
 JWT_SECRET=your_jwt_secret_here
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_SERVICE_KEY=your_supabase_service_role_key
