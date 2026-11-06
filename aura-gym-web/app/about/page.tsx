@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Reveal from '@/components/motion/Reveal';
 import { StaggerContainer, StaggerItem } from '@/components/motion/Stagger';
 import Button from '@/components/ui/Button';
+import AuraImage from '@/components/ui/AuraImage';
 import { ShieldCheck, Compass, Zap, Flame } from 'lucide-react';
 
 const VALUES = [
@@ -44,12 +44,20 @@ export default function AboutPage() {
       <section className="max-w-content mx-auto px-6 md:px-12 mb-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <Reveal direction="left">
-            <div className="relative h-[440px] w-full rounded-card overflow-hidden border border-black/[0.06] shadow-aura-card">
-              <Image src="/images/facility-strength.jpg" alt="Aura Gym" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 right-5">
+            <div className="relative h-[440px] w-full rounded-2xl overflow-hidden border border-black/[0.08] shadow-aura-card">
+              <AuraImage
+                src="/images/facility-strength.jpg"
+                alt="Aura Gym Performance Floor"
+                fill
+                priority
+                className="object-cover"
+                containerClassName="w-full h-full"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20" />
+              <div className="absolute bottom-5 left-5 right-5 z-30 text-white">
                 <span className="text-[10px] uppercase tracking-[0.2em] font-heading font-semibold text-aura-ember">Calibrated Atmosphere</span>
-                <p className="font-heading text-base font-bold text-aura-ink mt-0.5">Engineered for total focus and output.</p>
+                <p className="font-heading text-base font-bold mt-0.5">Engineered for total focus and output.</p>
               </div>
             </div>
           </Reveal>
@@ -80,7 +88,7 @@ export default function AboutPage() {
               const Icon = v.icon;
               return (
                 <StaggerItem key={i}>
-                  <div className="p-7 rounded-card bg-aura-canvas border border-black/[0.06] hover:border-black/15 hover:shadow-aura-card-hover transition-all duration-300 h-full shadow-aura-sm">
+                  <div className="p-7 rounded-2xl bg-aura-canvas border border-black/[0.06] hover:border-black/15 hover:shadow-aura-card-hover transition-all duration-300 h-full shadow-aura-sm">
                     <div className="w-10 h-10 rounded-full bg-white border border-black/[0.06] flex items-center justify-center text-aura-ember mb-5 shadow-sm">
                       <Icon className="w-4 h-4" />
                     </div>
@@ -104,10 +112,17 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {GALLERY_IMAGES.map((img, i) => (
             <Reveal key={i} delay={i * 0.1}>
-              <div className="group relative h-[320px] rounded-card overflow-hidden border border-black/[0.06] bg-white cursor-pointer shadow-aura-card hover:shadow-aura-card-hover transition-all duration-300">
-                <Image src={img.url} alt={img.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 50vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5">
+              <div className="group relative h-[320px] rounded-2xl overflow-hidden border border-black/[0.08] bg-white cursor-pointer shadow-aura-card hover:shadow-aura-card-hover transition-all duration-300">
+                <AuraImage
+                  src={img.url}
+                  alt={img.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  containerClassName="w-full h-full"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20" />
+                <div className="absolute bottom-5 left-5 right-5 z-30">
                   <h4 className="font-heading font-bold text-lg text-white group-hover:text-aura-ember transition-colors tracking-tight">{img.title}</h4>
                   <p className="text-xs text-white/80 mt-0.5 font-light">{img.subtitle}</p>
                 </div>

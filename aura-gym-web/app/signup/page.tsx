@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Input } from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
+import AuraImage from '@/components/ui/AuraImage';
 import { useAuth } from '@/lib/auth';
 import { api, Plan } from '@/lib/api';
 import { Lock, Mail, User, ShieldCheck, ArrowRight } from 'lucide-react';
@@ -68,15 +68,17 @@ function SignupForm() {
       <div className="w-full max-w-4xl bg-white border border-black/[0.08] rounded-[24px] overflow-hidden shadow-aura-card-hover grid grid-cols-1 lg:grid-cols-12 min-h-[580px]">
         {/* Left Side: Photo & Brand Panel */}
         <div className="lg:col-span-5 relative overflow-hidden bg-aura-ink text-white p-8 md:p-10 flex flex-col justify-between">
-          <Image
+          <AuraImage
             src="/images/athlete-back.jpg"
             alt="Athlete Training"
             fill
+            priority
             className="object-cover opacity-40 mix-blend-luminosity"
+            containerClassName="absolute inset-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-aura-ink via-aura-ink/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-aura-ink via-aura-ink/60 to-transparent z-10" />
 
-          <div className="relative z-10">
+          <div className="relative z-20">
             <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center font-heading font-black text-aura-ink text-xs mb-6">
               A
             </div>
@@ -88,7 +90,7 @@ function SignupForm() {
             </h2>
           </div>
 
-          <div className="relative z-10 pt-8 text-xs text-white/70 space-y-2 font-light">
+          <div className="relative z-20 pt-8 text-xs text-white/70 space-y-2 font-light">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-aura-ember shrink-0" />
               <span>Full Access to Member App & Floor Schedule</span>

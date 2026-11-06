@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from '@/components/motion/Reveal';
 import { StaggerContainer, StaggerItem } from '@/components/motion/Stagger';
 import Button from '@/components/ui/Button';
+import AuraImage from '@/components/ui/AuraImage';
 import { X, Award, ChevronRight } from 'lucide-react';
 import { TRAINERS_DATA } from '@/components/sections/Trainers';
 
@@ -35,18 +35,19 @@ export default function TrainersPage() {
             <StaggerItem key={trainer.id}>
               <div
                 onClick={() => setSelectedTrainer(trainer)}
-                className="bg-white border border-black/[0.06] rounded-card overflow-hidden group cursor-pointer transition-all duration-300 hover:border-black/15 hover:shadow-aura-card-hover hover:-translate-y-1 shadow-aura-card flex flex-col h-full"
+                className="bg-white border border-black/[0.08] rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:border-black/20 hover:shadow-aura-card-hover hover:-translate-y-1 shadow-aura-card flex flex-col h-full"
               >
                 {/* Image */}
-                <div className="relative h-[360px] w-full overflow-hidden bg-aura-subtle">
-                  <Image
+                <div className="relative h-[360px] w-full overflow-hidden bg-neutral-100">
+                  <AuraImage
                     src={trainer.image}
                     alt={trainer.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-all duration-500"
+                    containerClassName="w-full h-full"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 z-20" />
                 </div>
 
                 {/* Details */}
@@ -110,11 +111,12 @@ export default function TrainersPage() {
                 </button>
 
                 <div className="relative h-60 w-full rounded-2xl overflow-hidden mb-6 border border-black/[0.06]">
-                  <Image
+                  <AuraImage
                     src={selectedTrainer.image}
                     alt={selectedTrainer.name}
                     fill
                     className="object-cover"
+                    containerClassName="w-full h-full"
                   />
                 </div>
 

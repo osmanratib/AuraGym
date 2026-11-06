@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Reveal from '@/components/motion/Reveal';
 import Button from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import AuraImage from '@/components/ui/AuraImage';
 import { AuraAlert } from '@/lib/alerts';
 import { api } from '@/lib/api';
 import { MapPin, Phone, Mail, Clock, Sparkles } from 'lucide-react';
@@ -78,7 +78,7 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Trial Form (7 Cols) */}
-          <div className="lg:col-span-7 bg-white border border-black/[0.06] rounded-card p-8 md:p-10 shadow-aura-card relative">
+          <div className="lg:col-span-7 bg-white border border-black/[0.08] rounded-2xl p-8 md:p-10 shadow-aura-card relative">
             <div className="flex items-center gap-2 mb-7">
               <Sparkles className="w-4 h-4 text-aura-ember" />
               <h2 className="font-heading font-bold text-lg text-aura-ink uppercase tracking-[0.14em]">
@@ -138,7 +138,7 @@ export default function ContactPage() {
           {/* Details & Location (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
             {/* Contact Details */}
-            <div className="bg-white border border-black/[0.06] rounded-card p-7 space-y-5 shadow-aura-card">
+            <div className="bg-white border border-black/[0.08] rounded-2xl p-7 space-y-5 shadow-aura-card">
               <h3 className="font-heading font-bold text-base text-aura-ink uppercase tracking-[0.14em]">
                 Sanctuary Location
               </h3>
@@ -163,7 +163,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-heading font-semibold text-aura-ink text-sm">Direct Concierge</p>
-                    <p className="text-aura-slate text-xs mt-0.5">+1 (800) 890-AURA</p>
+                    <p className="text-aura-slate text-xs mt-0.5 font-mono">+1 (800) 890-AURA</p>
                   </div>
                 </div>
 
@@ -173,14 +173,14 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-heading font-semibold text-aura-ink text-sm">Private Inquiries</p>
-                    <p className="text-aura-slate text-xs mt-0.5">concierge@auragym.com</p>
+                    <p className="text-aura-slate text-xs mt-0.5 font-mono">concierge@auragym.com</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Hours */}
-            <div className="bg-white border border-black/[0.06] rounded-card p-7 space-y-3.5 shadow-aura-card">
+            <div className="bg-white border border-black/[0.08] rounded-2xl p-7 space-y-3.5 shadow-aura-card">
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-aura-ember" />
                 <h3 className="font-heading font-bold text-xs uppercase tracking-[0.14em] text-aura-ink">
@@ -203,11 +203,18 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Photo Preview of Turf/Sanctuary */}
-            <div className="relative h-44 rounded-card overflow-hidden border border-black/[0.06] shadow-aura-card group">
-              <Image src="/images/facility-turf.jpg" alt="Aura Gym Facility Turf" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+            {/* Turf Photo with AuraImage */}
+            <div className="relative h-44 rounded-2xl overflow-hidden border border-black/[0.08] shadow-aura-card group">
+              <AuraImage
+                src="/images/facility-turf.jpg"
+                alt="Aura Gym Turf Track"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                containerClassName="w-full h-full"
+                sizes="(max-width: 1024px) 100vw, 320px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-20" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white z-30">
                 <div>
                   <p className="font-heading font-bold text-sm">District 7 Facility</p>
                   <p className="text-[11px] text-white/80 font-light">Valet parking at entrance</p>

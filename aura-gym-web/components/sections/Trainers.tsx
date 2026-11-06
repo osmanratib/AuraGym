@@ -1,27 +1,27 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Award, ChevronRight } from 'lucide-react';
 import Reveal from '../motion/Reveal';
 import Button from '../ui/Button';
+import AuraImage from '../ui/AuraImage';
 
 export const TRAINERS_DATA = [
   {
     id: 'marcus-vance',
     name: 'Marcus Vance',
     role: 'Head of Human Performance',
-    specialties: ['Biomechanics', 'Strength', 'Body Comp'],
+    specialties: ['Biomechanics', 'Strength', 'Hypertrophy'],
     bio: 'Former collegiate strength coach and Olympic lifter with 12+ years of experience training professional athletes. Specialized in kinetic chain alignment and progressive neural loading.',
-    certifications: ['CSCS *D', 'USAW Senior Coach', 'EXOS Performance'],
+    certifications: ['CSCS *D', 'USAW Senior Coach', 'EXOS Performance Specialist'],
     image: '/images/athlete-biceps.jpg',
   },
   {
     id: 'elena-rostova',
     name: 'Elena Rostova',
     role: 'Director of Metabolic Conditioning',
-    specialties: ['VO2 Max', 'Anaerobic Threshold', 'Track Kinetics'],
+    specialties: ['VO2 Max', 'Anaerobic Threshold', 'Conditioning'],
     bio: 'Former national heptathlete. Elena develops proprietary high-intensity conditioning circuits designed to elevate metabolic ceiling without compromising lean muscle.',
     certifications: ['NASM Master Trainer', 'Precision Nutrition L2'],
     image: '/images/athlete-curls.jpg',
@@ -37,11 +37,11 @@ export const TRAINERS_DATA = [
   },
   {
     id: 'maya-lin',
-    name: 'Dr. Maya Lin',
+    name: 'Dr. Maya Lin, PT',
     role: 'Lead Physiotherapist',
     specialties: ['Fascial Release', 'Spine Mechanics', 'Recovery'],
     bio: 'Doctor of Physical Therapy specializing in orthopedic performance and athletic restoration. Bridges strenuous training and cellular recovery.',
-    certifications: ['Doctor of PT', 'FRCms', 'Dry Needling'],
+    certifications: ['Doctor of PT', 'FRCms', 'Dry Needling Certified'],
     image: '/images/trainer-physique.jpg',
   },
   {
@@ -73,8 +73,8 @@ export default function TrainersSection() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <p className="text-aura-slate text-sm max-w-sm leading-relaxed">
-              Credentialed sports scientists and world-class athletes dedicated to your evolution.
+            <p className="text-aura-slate text-sm max-w-sm leading-relaxed font-light">
+              Credentialed sports scientists and world-class athletes dedicated to your physical evolution.
             </p>
           </Reveal>
         </div>
@@ -87,22 +87,23 @@ export default function TrainersSection() {
             <Reveal key={trainer.id} delay={i * 0.08} direction="none">
               <div
                 onClick={() => setActiveTrainer(trainer)}
-                className="w-[270px] sm:w-[300px] bg-aura-canvas border border-black/[0.06] rounded-card overflow-hidden group cursor-pointer transition-all duration-300 hover:border-black/15 hover:shadow-aura-card-hover hover:-translate-y-1 shadow-aura-sm"
+                className="w-[270px] sm:w-[300px] bg-aura-canvas border border-black/[0.08] rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:border-black/20 hover:shadow-aura-card-hover hover:-translate-y-1 shadow-aura-card"
               >
-                <div className="relative h-[340px] w-full overflow-hidden bg-aura-subtle">
-                  <Image
+                <div className="relative h-[340px] w-full overflow-hidden bg-neutral-100">
+                  <AuraImage
                     src={trainer.image}
                     alt={trainer.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    containerClassName="w-full h-full"
                     sizes="300px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-[0.18em] font-heading font-semibold px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-aura-ember border border-black/[0.06] shadow-sm">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 z-20" />
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between z-30">
+                    <span className="text-[10px] uppercase tracking-[0.18em] font-heading font-semibold px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-sm text-aura-ember border border-black/[0.06] shadow-sm">
                       {trainer.specialties[0]}
                     </span>
-                    <div className="w-7 h-7 rounded-full bg-white/90 text-aura-ink flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm">
+                    <div className="w-7 h-7 rounded-full bg-white/95 text-aura-ink flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm">
                       <ChevronRight className="w-3.5 h-3.5" />
                     </div>
                   </div>
@@ -150,7 +151,13 @@ export default function TrainersSection() {
                 </button>
 
                 <div className="relative h-64 w-full rounded-2xl overflow-hidden mb-6 border border-black/[0.06]">
-                  <Image src={activeTrainer.image} alt={activeTrainer.name} fill className="object-cover" />
+                  <AuraImage
+                    src={activeTrainer.image}
+                    alt={activeTrainer.name}
+                    fill
+                    className="object-cover"
+                    containerClassName="w-full h-full"
+                  />
                 </div>
 
                 <div className="text-[11px] uppercase tracking-[0.2em] text-aura-ember font-heading font-semibold mb-0.5">
@@ -185,7 +192,7 @@ export default function TrainersSection() {
 
               <div className="pt-6 mt-6 border-t border-black/[0.06]">
                 <Button href="/contact" className="w-full">
-                  Book Assessment
+                  Book Assessment with {activeTrainer.name.split(' ')[0]}
                 </Button>
               </div>
             </motion.div>
