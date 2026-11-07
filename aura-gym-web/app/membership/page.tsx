@@ -78,13 +78,17 @@ export default function MembershipPage() {
       <div className="max-w-content mx-auto px-6 md:px-12">
         {/* Header */}
         <Reveal className="text-center max-w-2xl mx-auto mb-14">
-          <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-3 flex items-center justify-center gap-3">
-            <span className="w-8 h-[1.5px] bg-aura-ember" />
-            <span>Membership Plans</span>
-            <span className="w-8 h-[1.5px] bg-aura-ember" />
+          <div className="flex items-center justify-center gap-2.5 mb-3">
+            <span className="w-2 h-2 rounded-full bg-aura-ember" />
+            <span className="text-[11px] uppercase tracking-[0.28em] font-heading font-bold text-aura-ember">
+              Membership Protocol
+            </span>
+            <span className="w-2 h-2 rounded-full bg-aura-ember" />
           </div>
-          <h1 className="font-heading font-bold text-4xl sm:text-6xl text-aura-ink tracking-[-0.04em] mb-5 leading-tight">
-            Transparent investment.
+          <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl text-aura-ink tracking-[-0.035em] uppercase mb-5 leading-[0.96]">
+            Transparent
+            <br />
+            <span className="text-aura-slate/80">Investment Tiers.</span>
           </h1>
           <p className="text-base sm:text-lg text-aura-slate leading-relaxed font-light">
             Choose the tier tailored to your training frequency and recovery requirements.

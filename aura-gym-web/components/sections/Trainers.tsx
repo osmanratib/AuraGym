@@ -59,61 +59,65 @@ export default function TrainersSection() {
   const [activeTrainer, setActiveTrainer] = useState<(typeof TRAINERS_DATA)[0] | null>(null);
 
   return (
-    <section className="py-24 md:py-32 bg-white relative overflow-hidden border-t border-black/[0.06]">
-      <div className="max-w-content mx-auto px-6 md:px-12 mb-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <section className="py-24 md:py-32 bg-white relative overflow-hidden border-b border-black/[0.08]">
+      <div className="max-w-content mx-auto px-6 md:px-12 mb-14">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-black/[0.08]">
           <Reveal>
-            <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-3 flex items-center gap-3">
-              <span className="w-8 h-[1.5px] bg-aura-ember" />
-              <span>Coaching Faculty</span>
+            <div className="flex items-center gap-2.5 mb-3">
+              <span className="w-2 h-2 rounded-full bg-aura-ember" />
+              <span className="text-[11px] uppercase tracking-[0.28em] font-heading font-bold text-aura-ember">
+                03 // Coaching Faculty
+              </span>
             </div>
-            <h2 className="font-heading font-bold text-3xl sm:text-5xl text-aura-ink tracking-[-0.03em]">
-              Master Coaches
+            <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-aura-ink tracking-[-0.035em] uppercase leading-[0.96]">
+              Masters of
+              <br />
+              <span className="text-aura-slate/80">Human Kinetics.</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.15}>
-            <p className="text-aura-slate text-sm max-w-sm leading-relaxed font-light">
-              Credentialed sports scientists and world-class athletes dedicated to your physical evolution.
+            <p className="text-aura-slate text-xs sm:text-sm max-w-sm leading-relaxed font-light">
+              Credentialed sports scientists and former Olympic lifters dedicated to methodically redefining your physical capacity.
             </p>
           </Reveal>
         </div>
       </div>
 
-      {/* Horizontal scroll */}
-      <div className="w-full overflow-x-auto pb-6 pt-2 px-6 md:px-12 scrollbar-none">
-        <div className="flex gap-5 w-max">
+      {/* Horizontal Carousel */}
+      <div className="w-full overflow-x-auto pb-8 pt-2 px-6 md:px-12 scrollbar-none">
+        <div className="flex gap-6 w-max">
           {TRAINERS_DATA.map((trainer, i) => (
             <Reveal key={trainer.id} delay={i * 0.08} direction="none">
               <div
                 onClick={() => setActiveTrainer(trainer)}
-                className="w-[270px] sm:w-[300px] bg-aura-canvas border border-black/[0.08] rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:border-black/20 hover:shadow-aura-card-hover hover:-translate-y-1 shadow-aura-card"
+                className="w-[280px] sm:w-[310px] bg-aura-canvas border border-black/[0.08] rounded-[22px] overflow-hidden group cursor-pointer transition-all duration-300 hover:border-black/20 hover:shadow-aura-card-hover hover:-translate-y-1 shadow-aura-card"
               >
-                <div className="relative h-[340px] w-full overflow-hidden bg-neutral-100">
+                <div className="relative h-[360px] w-full overflow-hidden bg-neutral-100">
                   <AuraImage
                     src={trainer.image}
                     alt={trainer.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     containerClassName="w-full h-full"
-                    sizes="300px"
+                    sizes="310px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 z-20" />
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between z-30">
-                    <span className="text-[10px] uppercase tracking-[0.18em] font-heading font-semibold px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-sm text-aura-ember border border-black/[0.06] shadow-sm">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-85 z-20" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between z-30">
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-heading font-bold px-3 py-1 rounded-full bg-white/95 text-aura-ember border border-black/[0.06] shadow-sm">
                       {trainer.specialties[0]}
                     </span>
-                    <div className="w-7 h-7 rounded-full bg-white/95 text-aura-ink flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm">
-                      <ChevronRight className="w-3.5 h-3.5" />
+                    <div className="w-8 h-8 rounded-full bg-white text-aura-ink flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+                      <ChevronRight className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
 
-                <div className="p-5">
-                  <h3 className="font-heading font-bold text-lg text-aura-ink group-hover:text-aura-ember transition-colors tracking-tight">
+                <div className="p-6">
+                  <h3 className="font-heading font-bold text-xl text-aura-ink group-hover:text-aura-ember transition-colors tracking-tight">
                     {trainer.name}
                   </h3>
-                  <p className="text-[11px] uppercase tracking-[0.14em] text-aura-slate mt-0.5 font-heading font-medium">
+                  <p className="text-[11px] uppercase tracking-[0.16em] text-aura-slate mt-1 font-heading font-medium">
                     {trainer.role}
                   </p>
                 </div>
@@ -123,7 +127,7 @@ export default function TrainersSection() {
         </div>
       </div>
 
-      {/* Bio Drawer */}
+      {/* Slide-over Bio Drawer */}
       <AnimatePresence>
         {activeTrainer && (
           <div className="fixed inset-0 z-50 flex justify-end">
@@ -132,67 +136,90 @@ export default function TrainersSection() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActiveTrainer(null)}
-              className="fixed inset-0 bg-black/30 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             />
+
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-md bg-white border-l border-black/10 h-full p-8 overflow-y-auto z-10 flex flex-col justify-between shadow-2xl"
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="relative w-full max-w-lg bg-white h-full shadow-2xl p-8 overflow-y-auto flex flex-col justify-between z-10"
             >
               <div>
                 <button
                   onClick={() => setActiveTrainer(null)}
-                  className="p-2 text-aura-slate hover:text-aura-ink rounded-full hover:bg-black/5 transition-colors mb-5"
-                  aria-label="Close"
+                  className="p-2 text-aura-slate hover:text-aura-ink rounded-full hover:bg-black/5 transition-colors mb-6"
+                  aria-label="Close bio drawer"
                 >
                   <X className="w-5 h-5" />
                 </button>
 
-                <div className="relative h-64 w-full rounded-2xl overflow-hidden mb-6 border border-black/[0.06]">
+                <div className="relative h-72 w-full rounded-2xl overflow-hidden mb-6 shadow-md">
                   <AuraImage
                     src={activeTrainer.image}
                     alt={activeTrainer.name}
                     fill
                     className="object-cover"
                     containerClassName="w-full h-full"
+                    sizes="480px"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h3 className="font-heading font-bold text-2xl tracking-tight">
+                      {activeTrainer.name}
+                    </h3>
+                    <p className="text-xs uppercase tracking-wider text-neutral-300 font-heading">
+                      {activeTrainer.role}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="text-[11px] uppercase tracking-[0.2em] text-aura-ember font-heading font-semibold mb-0.5">
-                  Specialist
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="text-[11px] uppercase tracking-[0.22em] font-heading font-bold text-aura-ember mb-2">
+                      Athletic Biography
+                    </h4>
+                    <p className="text-sm text-aura-slate leading-relaxed font-light">
+                      {activeTrainer.bio}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-[11px] uppercase tracking-[0.22em] font-heading font-bold text-aura-ember mb-2">
+                      Key Disciplines
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {activeTrainer.specialties.map((spec) => (
+                        <span
+                          key={spec}
+                          className="px-3 py-1 rounded-full bg-aura-canvas border border-black/[0.08] text-xs font-heading font-medium text-aura-ink"
+                        >
+                          {spec}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-[11px] uppercase tracking-[0.22em] font-heading font-bold text-aura-ember mb-2">
+                      Credentials & Honors
+                    </h4>
+                    <div className="space-y-2">
+                      {activeTrainer.certifications.map((cert) => (
+                        <div key={cert} className="flex items-center gap-2 text-xs text-aura-ink font-medium">
+                          <Award className="w-4 h-4 text-aura-ember shrink-0" />
+                          <span>{cert}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-heading font-bold text-2xl text-aura-ink tracking-tight">
-                  {activeTrainer.name}
-                </h3>
-                <p className="text-xs text-aura-slate mt-0.5 mb-5 font-heading font-medium uppercase tracking-[0.1em]">
-                  {activeTrainer.role}
-                </p>
-
-                <h4 className="text-[11px] uppercase tracking-[0.2em] font-heading font-semibold text-aura-ink mb-2">
-                  Biography
-                </h4>
-                <p className="text-sm text-aura-slate leading-relaxed mb-6 font-light">
-                  {activeTrainer.bio}
-                </p>
-
-                <h4 className="text-[11px] uppercase tracking-[0.2em] font-heading font-semibold text-aura-ink mb-2">
-                  Credentials
-                </h4>
-                <ul className="space-y-2">
-                  {activeTrainer.certifications.map((c, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-xs text-aura-ink">
-                      <Award className="w-3.5 h-3.5 text-aura-ember shrink-0" />
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-black/[0.06]">
-                <Button href="/contact" className="w-full">
-                  Book Assessment with {activeTrainer.name.split(' ')[0]}
+              <div className="pt-8 border-t border-black/[0.08] mt-8">
+                <Button href="/contact" size="lg" className="w-full">
+                  Book 1-on-1 Consultation
                 </Button>
               </div>
             </motion.div>

@@ -1,18 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  --font-syne: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-space-grotesk: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --aura-canvas: #F8F8F6;
+  --aura-canvas: #F5F4F0;
   --aura-surface: #FFFFFF;
-  --aura-subtle: #F1F1EE;
-  --aura-ink: #111114;
-  --aura-slate: #686873;
-  --aura-mist: #9E9EA8;
+  --aura-subtle: #EDEDE8;
+  --aura-studio: #E8E7E2;
+  --aura-ink: #0D0D11;
+  --aura-slate: #5E5E69;
+  --aura-mist: #9494A0;
   --aura-ember: #FF521B;
 }
 
@@ -28,29 +30,29 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-space-grotesk);
-    letter-spacing: -0.035em;
+    letter-spacing: -0.03em;
     color: var(--aura-ink);
   }
 
   ::selection {
     background-color: rgba(255, 82, 27, 0.2);
-    color: #111114;
+    color: #0D0D11;
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F8F8F6;
+  background: #F5F4F0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D8D8D3;
+  background: #D5D4CE;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B5B5AF;
+  background: #B0B0A8;
 }
 
 /* SweetAlert2 Minimalist Light Theme */
@@ -58,20 +60,20 @@
   background: #FFFFFF !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   border-radius: 20px !important;
-  color: #111114 !important;
+  color: #0D0D11 !important;
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.15) !important;
   padding: 2rem !important;
 }
 
 .aura-swal-title {
-  color: #111114 !important;
+  color: #0D0D11 !important;
   font-family: var(--font-space-grotesk), sans-serif !important;
   font-weight: 700 !important;
   letter-spacing: -0.02em !important;
 }
 
 .aura-swal-confirm-btn {
-  background: #111114 !important;
+  background: #0D0D11 !important;
   color: #FFFFFF !important;
   font-weight: 600 !important;
   border-radius: 9999px !important;
@@ -87,8 +89,8 @@
 }
 
 .aura-swal-cancel-btn {
-  background: #F1F1EE !important;
-  color: #686873 !important;
+  background: #EDEDE8 !important;
+  color: #5E5E69 !important;
   border: 1px solid rgba(0, 0, 0, 0.05) !important;
   font-weight: 600 !important;
   border-radius: 9999px !important;

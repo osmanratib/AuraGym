@@ -10,14 +10,14 @@ import { Input } from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import AuraImage from '@/components/ui/AuraImage';
 import { useAuth } from '@/lib/auth';
-import { api, Plan } from '@/lib/api';
-import { Lock, Mail, User, ShieldCheck, ArrowRight } from 'lucide-react';
+import { api, Plan, DEFAULT_PLANS } from '@/lib/api';
+import { Lock, Mail, User, ShieldCheck, ArrowRight, ChevronDown } from 'lucide-react';
 
 const signupSchema = z.object({
   full_name: z.string().min(2, 'Full name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
   password: z.string().min(6, 'Password must be at least 6 characters long'),
-  plan_id: z.string().optional(),
+  plan_id: z.string().min(1, 'Please select a membership tier'),
 });
 
 type SignupFormData = z.infer<typeof signupSchema>;
@@ -25,7 +25,7 @@ type SignupFormData = z.infer<typeof signupSchema>;
 function SignupForm() {
   const searchParams = useSearchParams();
   const preselectedPlan = searchParams.get('plan') || '';
-  const [plans, setPlans] = useState<Plan[]>([]);
+  const [plans, setPlans] = useState<Plan[]>(DEFAULT_PLANS);
   const [isLoading, setIsLoading] = useState(false);
   const { signup } = useAuth();
 
@@ -37,19 +37,30 @@ function SignupForm() {
   } = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
-      plan_id: preselectedPlan,
+      plan_id: preselectedPlan || DEFAULT_PLANS[1].id,
     },
   });
 
   useEffect(() => {
+    let isMounted = true;
     api.getPlans().then((data) => {
-      setPlans(data || []);
+      if (!isMounted) return;
+      const loaded = data && data.length > 0 ? data : DEFAULT_PLANS;
+      setPlans(loaded);
       if (preselectedPlan) {
         setValue('plan_id', preselectedPlan);
-      } else if (data && data.length > 0) {
-        setValue('plan_id', data[0].id);
+      } else {
+        setValue('plan_id', loaded[1]?.id || loaded[0]?.id);
       }
-    }).catch(() => {});
+    }).catch(() => {
+      if (isMounted) {
+        setPlans(DEFAULT_PLANS);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
   }, [preselectedPlan, setValue]);
 
   const onSubmit = async (data: SignupFormData) => {
@@ -58,7 +69,7 @@ function SignupForm() {
       full_name: data.full_name,
       email: data.email,
       password: data.password,
-      plan_id: data.plan_id || undefined,
+      plan_id: data.plan_id,
     });
     setIsLoading(false);
   };
@@ -150,16 +161,26 @@ function SignupForm() {
               <label className="block text-[11px] font-heading font-semibold uppercase tracking-[0.14em] text-aura-slate">
                 Select Membership Tier
               </label>
-              <select
-                {...register('plan_id')}
-                className="w-full bg-[#FAF9F6] border border-black/10 rounded-xl px-4 py-3 text-aura-ink text-sm outline-none focus:bg-white focus:border-aura-ember focus:ring-1 focus:ring-aura-ember transition-all"
-              >
-                {plans.map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.name} — ${p.price_monthly}/month
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  {...register('plan_id')}
+                  className="w-full appearance-none bg-[#FAF9F6] border border-black/10 rounded-xl px-4 py-3.5 pr-10 text-aura-ink text-sm outline-none focus:bg-white focus:border-aura-ember focus:ring-1 focus:ring-aura-ember transition-all cursor-pointer font-medium shadow-sm"
+                >
+                  {plans.map((p) => (
+                    <option
+                      key={p.id}
+                      value={p.id}
+                      className="bg-white text-neutral-900 font-sans py-2"
+                    >
+                      {p.name} — ${p.price_monthly}/month
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-4 h-4 text-aura-slate pointer-events-none absolute right-4 top-1/2 -translate-y-1/2" />
+              </div>
+              {errors.plan_id && (
+                <p className="text-xs text-red-500 mt-1">{errors.plan_id.message}</p>
+              )}
             </div>
 
             <Button

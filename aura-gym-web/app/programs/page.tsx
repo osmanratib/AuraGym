@@ -104,13 +104,17 @@ export default function ProgramsPage() {
     <div className="pt-28 pb-24 bg-aura-canvas">
       <div className="max-w-content mx-auto px-6 md:px-12">
         {/* Header */}
-        <Reveal className="mb-12">
-          <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-3 flex items-center gap-3">
-            <span className="w-8 h-[1.5px] bg-aura-ember" />
-            <span>Curriculum</span>
+        <Reveal className="mb-14">
+          <div className="flex items-center gap-2.5 mb-3">
+            <span className="w-2 h-2 rounded-full bg-aura-ember" />
+            <span className="text-[11px] uppercase tracking-[0.28em] font-heading font-bold text-aura-ember">
+              Curriculum // Performance Pathways
+            </span>
           </div>
-          <h1 className="font-heading font-bold text-4xl sm:text-6xl text-aura-ink tracking-[-0.04em] max-w-3xl mb-5 leading-tight">
-            Engineered disciplines.
+          <h1 className="font-display font-black text-4xl sm:text-6xl md:text-7xl text-aura-ink tracking-[-0.035em] uppercase max-w-4xl mb-5 leading-[0.96]">
+            Engineered
+            <br />
+            <span className="text-aura-slate/80">Disciplines & Kinetics.</span>
           </h1>
           <p className="text-base sm:text-lg text-aura-slate max-w-2xl leading-relaxed font-light">
             Every session at Aura Gym is periodized and instructed by master coaches. Filter disciplines below to explore the schedule and methodology.

@@ -11,44 +11,48 @@ import AuraImage from '../ui/AuraImage';
 export const PROGRAMS_DATA = [
   {
     id: 'hypertrophy',
+    num: '01',
     title: 'Hypertrophy & Kinetic Power',
-    category: 'Strength',
+    category: 'Strength Protocol',
     icon: Flame,
-    intensity: 'High',
-    duration: '60 min',
+    intensity: 'High Tier',
+    duration: '60 MIN',
     image: '/images/athlete-biceps.jpg',
     desc: 'Periodized progressive overload with biomechanical machines and calibrated free weights for maximum muscular density.',
     details: 'Focuses on tension time, mechanical drop sets, and eccentric overload under the direct oversight of elite strength coaches. Includes post-session intra-workout recovery shake and targeted myofascial release.',
   },
   {
     id: 'athletic-conditioning',
+    num: '02',
     title: 'Athletic Conditioning & HIIT',
-    category: 'Cardio & Conditioning',
+    category: 'Cardio Protocol',
     icon: Zap,
-    intensity: 'Max',
-    duration: '45 min',
+    intensity: 'Max Effort',
+    duration: '45 MIN',
     image: '/images/facility-cardio.jpg',
     desc: 'Metabolic threshold training using curved treadmills, air bikes, sled pulls, and heart rate telemetry to forge unyielding endurance.',
     details: 'Live heart-rate telemetry tracking keeps athletes in target anaerobic zones. Designed to spike VO2 max and burn caloric reserves for up to 36 hours post-training.',
   },
   {
     id: 'olympic-lifting',
+    num: '03',
     title: 'Olympic Weightlifting Mastery',
-    category: 'Technique & Power',
+    category: 'Power Protocol',
     icon: Shield,
-    intensity: 'High',
-    duration: '75 min',
+    intensity: 'Elite Spec',
+    duration: '75 MIN',
     image: '/images/athlete-triceps.jpg',
     desc: 'Precision coaching on the snatch, clean & jerk, bar path trajectory analysis, and triple extension kinetics.',
     details: 'High-speed camera bar-path velocity feedback, custom wooden platforms, and competition Eleiko spec bars. Ideal for athletes seeking explosive kinetic output.',
   },
   {
     id: 'fascial-recovery',
+    num: '04',
     title: 'Fascial Release & Mobility Flow',
-    category: 'Longevity & Recovery',
+    category: 'Restoration',
     icon: Activity,
-    intensity: 'Moderate',
-    duration: '50 min',
+    intensity: 'Deliberate',
+    duration: '50 MIN',
     image: '/images/athlete-back.jpg',
     desc: 'Decompress compressed joints, restore hip and spine kinematics, and downregulate CNS fatigue with guided mobility.',
     details: 'Blends functional range conditioning (FRC), infrared thermal pads, pneumatic compression sleeves, and targeted breathwork to down-regulate the nervous system.',
@@ -59,39 +63,48 @@ export default function ProgramsSection() {
   const [selectedProgram, setSelectedProgram] = useState<(typeof PROGRAMS_DATA)[0] | null>(null);
 
   return (
-    <section className="py-24 md:py-32 bg-aura-canvas relative">
+    <section className="py-24 md:py-32 bg-aura-canvas relative border-b border-black/[0.08]">
       <div className="max-w-content mx-auto px-6 md:px-12">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 pb-10 border-b border-black/[0.08]">
           <Reveal>
-            <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-3 flex items-center gap-3">
-              <span className="w-8 h-[1.5px] bg-aura-ember" />
-              <span>Disciplines</span>
+            <div className="flex items-center gap-2.5 mb-3">
+              <span className="w-2 h-2 rounded-full bg-aura-ember" />
+              <span className="text-[11px] uppercase tracking-[0.28em] font-heading font-bold text-aura-ember">
+                02 // Disciplines
+              </span>
             </div>
-            <h2 className="font-heading font-bold text-3xl sm:text-5xl text-aura-ink tracking-[-0.03em]">
-              Calibrated Programs
+            <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-aura-ink tracking-[-0.035em] uppercase leading-[0.96]">
+              Calibrated
+              <br />
+              <span className="text-aura-slate/80">Training Architecture.</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.15}>
-            <Button href="/programs" variant="secondary" size="md">
-              View All Programs
-            </Button>
+            <div className="flex flex-col items-start md:items-end gap-3">
+              <span className="text-[11px] font-heading uppercase tracking-[0.22em] text-aura-slate font-medium">
+                Four Biomechanical Pathways
+              </span>
+              <Button href="/programs" variant="secondary" size="md">
+                View All Programs
+              </Button>
+            </div>
           </Reveal>
         </div>
 
         {/* Cards Grid */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {PROGRAMS_DATA.map((prog) => {
             const Icon = prog.icon;
             return (
               <StaggerItem key={prog.id}>
                 <div
                   onClick={() => setSelectedProgram(prog)}
-                  className="group relative bg-white border border-black/[0.08] rounded-2xl overflow-hidden shadow-aura-card hover:shadow-aura-card-hover hover:border-black/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                  className="group relative bg-white border border-black/[0.08] rounded-[22px] overflow-hidden shadow-aura-card hover:shadow-aura-card-hover hover:border-black/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between"
                 >
-                  {/* Photo Container with AuraImage */}
-                  <div className="relative h-60 w-full overflow-hidden bg-neutral-100">
+                  {/* Photo Container */}
+                  <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-neutral-100">
                     <AuraImage
                       src={prog.image}
                       alt={prog.title}
@@ -100,11 +113,11 @@ export default function ProgramsSection() {
                       containerClassName="w-full h-full"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-20" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent z-20" />
 
                     <div className="absolute top-4 left-4 z-30 flex items-center gap-2">
-                      <span className="text-[10px] font-heading font-semibold uppercase tracking-[0.16em] px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-aura-ink shadow-sm">
-                        {prog.category}
+                      <span className="text-[10px] font-heading font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-white/95 text-aura-ink shadow-sm">
+                        {prog.num} · {prog.category}
                       </span>
                     </div>
 
@@ -113,26 +126,26 @@ export default function ProgramsSection() {
                         <div className="w-7 h-7 rounded-full bg-aura-ember flex items-center justify-center text-white shadow-sm">
                           <Icon className="w-3.5 h-3.5" />
                         </div>
-                        <span className="text-xs font-mono font-medium">Duration: {prog.duration}</span>
+                        <span className="text-[11px] font-heading font-semibold uppercase tracking-wider">{prog.duration}</span>
                       </div>
-                      <span className="text-xs font-mono font-medium">Intensity: {prog.intensity}</span>
+                      <span className="text-[11px] font-heading font-semibold uppercase tracking-wider text-neutral-300">{prog.intensity}</span>
                     </div>
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-6 sm:p-7">
-                    <h3 className="font-heading font-bold text-xl text-aura-ink mb-2 group-hover:text-aura-ember transition-colors flex items-center justify-between tracking-tight">
-                      <span>{prog.title}</span>
-                      <ArrowUpRight className="w-4 h-4 text-aura-slate group-hover:text-aura-ember transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </h3>
+                  <div className="p-6 md:p-8 flex flex-col justify-between flex-1">
+                    <div>
+                      <h3 className="font-heading font-bold text-xl sm:text-2xl text-aura-ink group-hover:text-aura-ember transition-colors tracking-tight mb-2.5">
+                        {prog.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-aura-slate leading-relaxed font-light mb-6">
+                        {prog.desc}
+                      </p>
+                    </div>
 
-                    <p className="text-sm text-aura-slate leading-relaxed font-light mb-4">
-                      {prog.desc}
-                    </p>
-
-                    <div className="pt-3 border-t border-black/[0.06] flex items-center justify-between text-[11px] font-heading uppercase tracking-wider text-aura-ember font-semibold">
+                    <div className="flex items-center justify-between pt-4 border-t border-black/[0.06] text-xs font-heading font-semibold uppercase tracking-[0.16em] text-aura-ink group-hover:text-aura-ember transition-colors">
                       <span>Inspect Biomechanical Protocol</span>
-                      <span>→</span>
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </div>
                 </div>
@@ -142,52 +155,63 @@ export default function ProgramsSection() {
         </StaggerContainer>
       </div>
 
-      {/* Program Detail Modal */}
+      {/* Program Details Modal */}
       <Modal
-        isOpen={Boolean(selectedProgram)}
+        isOpen={!!selectedProgram}
         onClose={() => setSelectedProgram(null)}
         title={selectedProgram?.title}
       >
         {selectedProgram && (
-          <div className="space-y-5">
-            <div className="relative h-48 w-full rounded-xl overflow-hidden">
+          <div className="space-y-6">
+            <div className="relative h-60 rounded-xl overflow-hidden">
               <AuraImage
                 src={selectedProgram.image}
                 alt={selectedProgram.title}
                 fill
                 className="object-cover"
                 containerClassName="w-full h-full"
+                sizes="(max-width: 768px) 100vw, 600px"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <span className="text-[10px] font-heading font-bold uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-aura-ember">
+                  {selectedProgram.category}
+                </span>
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-2 text-xs">
-              <span className="px-3 py-1 rounded-full bg-aura-ember/10 text-aura-ember font-heading font-semibold uppercase tracking-wider">
-                {selectedProgram.category}
-              </span>
-              <span className="px-3 py-1 rounded-full bg-neutral-100 text-aura-ink font-heading font-medium">
-                {selectedProgram.duration}
-              </span>
-              <span className="px-3 py-1 rounded-full bg-neutral-100 text-aura-ink font-heading font-medium">
-                {selectedProgram.intensity}
-              </span>
-            </div>
-
-            <p className="text-sm md:text-base text-aura-ink leading-relaxed">
-              {selectedProgram.desc}
-            </p>
-
-            <div className="p-4 rounded-xl bg-neutral-50 border border-black/[0.06]">
-              <h4 className="text-[11px] uppercase tracking-[0.2em] font-heading font-semibold text-aura-ember mb-2">
-                Biomechanical Architecture
-              </h4>
-              <p className="text-xs md:text-sm text-aura-slate leading-relaxed font-light">
+            <div>
+              <h4 className="font-heading font-bold text-lg text-aura-ink mb-2">Protocol Overview</h4>
+              <p className="text-sm text-aura-slate leading-relaxed font-light mb-4">
+                {selectedProgram.desc}
+              </p>
+              <p className="text-sm text-aura-slate leading-relaxed font-light">
                 {selectedProgram.details}
               </p>
             </div>
 
+            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-black/[0.08]">
+              <div className="p-4 rounded-xl bg-aura-canvas border border-black/[0.06]">
+                <div className="text-[10px] uppercase tracking-[0.2em] font-heading font-semibold text-aura-slate mb-1">
+                  Session Duration
+                </div>
+                <div className="text-lg font-heading font-bold text-aura-ink">
+                  {selectedProgram.duration}
+                </div>
+              </div>
+              <div className="p-4 rounded-xl bg-aura-canvas border border-black/[0.06]">
+                <div className="text-[10px] uppercase tracking-[0.2em] font-heading font-semibold text-aura-slate mb-1">
+                  Kinetic Intensity
+                </div>
+                <div className="text-lg font-heading font-bold text-aura-ember">
+                  {selectedProgram.intensity}
+                </div>
+              </div>
+            </div>
+
             <div className="pt-2">
-              <Button href="/contact" className="w-full">
-                Book Trial In This Program
+              <Button href="/contact" size="lg" className="w-full">
+                Book Initial Assessment Session
               </Button>
             </div>
           </div>

@@ -10,55 +10,66 @@ export default function CTASection() {
   return (
     <section className="py-24 md:py-32 bg-aura-canvas relative overflow-hidden">
       <div className="max-w-content mx-auto px-6 md:px-12 relative z-10">
-        <div className="bg-aura-ink rounded-[28px] p-10 md:p-16 flex flex-col lg:flex-row items-center gap-10 lg:gap-16 overflow-hidden relative shadow-2xl">
+        <div className="bg-[#0E0E12] rounded-[30px] p-10 md:p-16 lg:p-20 flex flex-col lg:flex-row items-center gap-12 lg:gap-16 overflow-hidden relative shadow-2xl border border-white/10">
           {/* Subtle background photo accent */}
-          <div className="absolute -right-12 -bottom-12 w-72 h-72 rounded-full opacity-15 overflow-hidden pointer-events-none hidden lg:block">
+          <div className="absolute -right-12 -bottom-12 w-80 h-80 rounded-full opacity-10 overflow-hidden pointer-events-none hidden lg:block">
             <AuraImage
               src="/images/trainer-physique.jpg"
               alt=""
               fill
               className="object-cover"
               containerClassName="w-full h-full"
-              sizes="300px"
+              sizes="320px"
             />
           </div>
 
           <div className="flex-1 relative z-10">
             <Reveal>
-              <div className="text-[11px] uppercase tracking-[0.25em] font-heading font-semibold text-aura-ember mb-4 flex items-center gap-2">
-                <span className="w-6 h-[1.5px] bg-aura-ember" />
-                <span>Begin Your Trajectory</span>
+              <div className="flex items-center gap-2.5 mb-4">
+                <span className="w-2 h-2 rounded-full bg-aura-ember" />
+                <span className="text-[11px] uppercase tracking-[0.28em] font-heading font-bold text-aura-ember">
+                  05 // Athletic Initiation
+                </span>
               </div>
 
-              <h2 className="font-heading font-bold text-3xl sm:text-5xl text-white tracking-[-0.03em] mb-4 leading-tight">
-                Claim your complimentary 1-day trial pass.
+              <h2 className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-white tracking-[-0.035em] uppercase mb-5 leading-[0.98]">
+                Claim Your
+                <br />
+                <span className="text-neutral-400">1-Day Trial Pass.</span>
               </h2>
 
-              <p className="text-base text-white/70 max-w-lg leading-relaxed mb-8 font-light">
-                Experience our calibrated equipment, recovery thermal suites, and private training atmosphere with zero obligation.
+              <p className="text-sm sm:text-base text-neutral-300 max-w-lg leading-relaxed mb-8 font-light">
+                Experience calibrated competition equipment, private contrast recovery suites, and our architectural atmosphere with zero contract obligation.
               </p>
 
-              <Button href="/contact" variant="ember" size="lg" className="group">
-                <span>Book Free Visit Now</span>
-                <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" />
-              </Button>
+              <div className="flex flex-wrap items-center gap-4">
+                <Button href="/contact" variant="ember" size="lg" className="group shadow-aura-glow">
+                  <span>Book Complimentary Visit</span>
+                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" />
+                </Button>
+                <span className="text-[11px] uppercase tracking-[0.2em] font-heading font-semibold text-neutral-400">
+                  Limited Daily Allocations
+                </span>
+              </div>
             </Reveal>
           </div>
 
           {/* Real Gym Photo Preview with AuraImage */}
-          <Reveal delay={0.2} className="relative w-full lg:w-80 h-64 lg:h-80 rounded-2xl overflow-hidden border border-white/10 shadow-lg shrink-0">
+          <Reveal delay={0.2} className="relative w-full lg:w-96 h-72 lg:h-96 rounded-[22px] overflow-hidden border border-white/10 shadow-xl shrink-0">
             <AuraImage
               src="/images/facility-strength.jpg"
               alt="Aura Gym Performance Floor"
               fill
               className="object-cover"
               containerClassName="w-full h-full"
-              sizes="(max-width: 1024px) 100vw, 320px"
+              sizes="(max-width: 1024px) 100vw, 384px"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-20" />
-            <div className="absolute bottom-4 left-4 right-4 z-30 text-white">
-              <p className="font-heading font-bold text-sm">Metropolis Sanctuary</p>
-              <p className="text-[11px] text-white/80 font-light">District 7 Performance Deck</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-20" />
+            <div className="absolute bottom-5 left-5 right-5 z-30 text-white">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-heading font-bold text-aura-ember">
+                District 7 Metropolis
+              </span>
+              <p className="font-heading font-bold text-lg mt-0.5">Strength Deck & Recovery Floor</p>
             </div>
           </Reveal>
         </div>

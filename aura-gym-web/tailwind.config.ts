@@ -10,12 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         aura: {
-          canvas: "#F8F8F6",
+          canvas: "#F5F4F0",
           surface: "#FFFFFF",
-          subtle: "#F1F1EE",
-          ink: "#111114",
-          slate: "#686873",
-          mist: "#9E9EA8",
+          subtle: "#EDEDE8",
+          studio: "#E8E7E2",
+          ink: "#0D0D11",
+          slate: "#5E5E69",
+          mist: "#9494A0",
           ember: "#FF521B",
           "ember-dark": "#E04310",
           "ember-subtle": "#FFF2EC",
@@ -23,11 +24,12 @@ const config: Config = {
         },
       },
       fontFamily: {
+        display: ["var(--font-syne)", "var(--font-space-grotesk)", "sans-serif"],
         heading: ["var(--font-space-grotesk)", "sans-serif"],
         body: ["var(--font-inter)", "sans-serif"],
       },
       maxWidth: {
-        content: "1240px",
+        content: "1280px",
       },
       borderRadius: {
         card: "20px",
