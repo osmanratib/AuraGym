@@ -31,14 +31,14 @@ function PrecisionStudioBarbell() {
       {[-0.38, -0.19, 0.19, 0.38].map((pos, idx) => (
         <mesh key={idx} position={[pos, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
           <torusGeometry args={[0.041, 0.004, 16, 32]} />
-          <meshStandardMaterial color="#FF521B" metalness={0.88} roughness={0.2} />
+          <meshStandardMaterial color="#8E1616" metalness={0.88} roughness={0.2} />
         </mesh>
       ))}
 
       {/* Center Balance Ring */}
       <mesh rotation={[0, 0, Math.PI / 2]}>
         <torusGeometry args={[0.04, 0.003, 16, 32]} />
-        <meshStandardMaterial color="#FF521B" metalness={0.9} roughness={0.2} />
+        <meshStandardMaterial color="#8E1616" metalness={0.9} roughness={0.2} />
       </mesh>
 
       {/* Left Inner Collar */}
@@ -70,10 +70,10 @@ function PrecisionStudioBarbell() {
           <torusGeometry args={[0.15, 0.012, 16, 32]} />
           <meshStandardMaterial color="#D8D8E0" metalness={0.98} roughness={0.1} />
         </mesh>
-        {/* Ember Outer Rim Ring */}
+        {/* Crimson Outer Rim Ring */}
         <mesh position={[0, -0.04, 0]}>
           <torusGeometry args={[0.446, 0.009, 16, 48]} />
-          <meshStandardMaterial color="#FF521B" emissive="#FF521B" emissiveIntensity={0.65} />
+          <meshStandardMaterial color="#8E1616" emissive="#8E1616" emissiveIntensity={0.65} />
         </mesh>
         {/* End Bar Cap Nut */}
         <mesh position={[0, -0.15, 0]}>
@@ -99,10 +99,10 @@ function PrecisionStudioBarbell() {
           <torusGeometry args={[0.15, 0.012, 16, 32]} />
           <meshStandardMaterial color="#D8D8E0" metalness={0.98} roughness={0.1} />
         </mesh>
-        {/* Ember Outer Rim Ring */}
+        {/* Crimson Outer Rim Ring */}
         <mesh position={[0, 0.04, 0]}>
           <torusGeometry args={[0.446, 0.009, 16, 48]} />
-          <meshStandardMaterial color="#FF521B" emissive="#FF521B" emissiveIntensity={0.65} />
+          <meshStandardMaterial color="#8E1616" emissive="#8E1616" emissiveIntensity={0.65} />
         </mesh>
         {/* End Bar Cap Nut */}
         <mesh position={[0, 0.15, 0]}>
@@ -142,7 +142,7 @@ export default function HeroScene() {
         <ambientLight intensity={1.8} />
         <directionalLight position={[3, 5, 3]} intensity={2.2} color="#FFFFFF" />
         <directionalLight position={[-3, -2, 2]} intensity={1.1} color="#FAF9F6" />
-        <pointLight position={[0, 0.6, 1.2]} intensity={1.3} color="#FF521B" distance={3.2} />
+        <pointLight position={[0, 0.6, 1.2]} intensity={1.3} color="#8E1616" distance={3.2} />
 
         {/* 360-degree free orbit inspection like in the user's video */}
         <OrbitControls

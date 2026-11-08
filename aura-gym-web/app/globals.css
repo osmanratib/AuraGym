@@ -15,7 +15,7 @@
   --aura-ink: #0D0D11;
   --aura-slate: #5E5E69;
   --aura-mist: #9494A0;
-  --aura-ember: #FF521B;
+  --aura-ember: #8E1616;
 }
 
 @layer base {
@@ -35,7 +35,7 @@
   }
 
   ::selection {
-    background-color: rgba(255, 82, 27, 0.2);
+    background-color: rgba(142, 22, 22, 0.2);
     color: #0D0D11;
   }
 }
@@ -84,8 +84,8 @@
   transition: all 0.2s ease !important;
 }
 .aura-swal-confirm-btn:hover {
-  background: #FF521B !important;
-  box-shadow: 0 8px 20px rgba(255, 82, 27, 0.35) !important;
+  background: #8E1616 !important;
+  box-shadow: 0 8px 20px rgba(142, 22, 22, 0.35) !important;
 }
 
 .aura-swal-cancel-btn {

@@ -42,16 +42,16 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* 2. Monumental Hero Center: Massive Typography Layered BEHIND 3D Model */}
+      {/* 2. Monumental Hero Center: Massive Typography Layered BEHIND 3D Model in #8E1616 */}
       <div className="relative flex-1 w-full flex items-center justify-center min-h-[440px] sm:min-h-[500px] lg:min-h-[560px]">
-        {/* Giant Editorial Display Typography (Layered Behind 3D Model, exactly like "OBSIDIAN" in the video) */}
+        {/* Giant Editorial Display Typography in #8E1616 */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
         >
-          <h1 className="font-display font-black text-[23vw] sm:text-[22vw] lg:text-[23vw] tracking-[-0.04em] leading-none uppercase text-[#0E0E12] opacity-[0.92] select-none text-center">
+          <h1 className="font-display font-black text-[23vw] sm:text-[22vw] lg:text-[23vw] tracking-[-0.04em] leading-none uppercase text-[#8E1616] opacity-[0.95] select-none text-center">
             AURA
           </h1>
         </motion.div>
