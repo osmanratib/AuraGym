@@ -17,34 +17,10 @@ const HeroScene = dynamic(() => import('../three/HeroScene'), {
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[95vh] lg:min-h-screen bg-[#EBEAE5] text-aura-ink flex flex-col justify-between pt-24 pb-8 sm:pb-12 px-6 md:px-12 overflow-hidden select-none">
-      {/* 1. Top Architectural Micro-Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-content mx-auto flex items-center justify-between text-[10px] sm:text-[11px] font-heading font-semibold uppercase tracking-[0.22em] text-aura-slate border-b border-black/[0.08] pb-4 z-20 relative"
-      >
-        <div className="flex items-center gap-2 text-aura-ink">
-          <span className="w-2 h-2 rounded-full bg-aura-ember animate-pulse" />
-          <span>AURA (01)</span>
-        </div>
-
-        <div className="hidden sm:block tracking-[0.3em] text-aura-slate/80">
-          VOLUME 01 // MMXXVI
-        </div>
-
-        <div className="flex items-center gap-3">
-          <span className="hidden md:inline">BIOMECHANICS // A MODERN DISCIPLINE</span>
-          <span className="px-2 py-0.5 rounded bg-black/5 text-[9px] tracking-[0.18em]">
-            STUDIO SPEC
-          </span>
-        </div>
-      </motion.div>
-
-      {/* 2. Monumental Hero Center: Massive Typography Layered BEHIND 3D Model in #8E1616 */}
-      <div className="relative flex-1 w-full flex items-center justify-center min-h-[440px] sm:min-h-[500px] lg:min-h-[560px]">
-        {/* Giant Editorial Display Typography in #8E1616 */}
+    <section className="relative w-full min-h-[92vh] lg:min-h-screen bg-[#EBEAE5] text-aura-ink flex flex-col justify-between pt-24 pb-8 sm:pb-12 px-6 md:px-12 overflow-hidden select-none">
+      {/* 1. Monumental Hero Center: Massive Typography Layered BEHIND 3D Model in #8E1616 */}
+      <div className="relative flex-1 w-full flex items-center justify-center min-h-[460px] sm:min-h-[520px] lg:min-h-[580px]">
+        {/* Giant Editorial Display Typography in #8E1616 (Layered Behind 3D Model, exactly like "OBSIDIAN" in the reference video) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -61,7 +37,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden lg:block absolute right-4 top-10 z-20 max-w-[280px] p-5 rounded-2xl bg-[#111114] text-white shadow-2xl border border-white/10"
+          className="hidden lg:block absolute right-4 top-12 z-20 max-w-[280px] p-5 rounded-2xl bg-[#111114] text-white shadow-2xl border border-white/10"
         >
           <div className="flex items-center gap-2 mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-aura-ember" />
@@ -79,13 +55,13 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-10 w-full h-[360px] sm:h-[440px] md:h-[500px] lg:h-[540px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+          className="relative z-10 w-full h-[380px] sm:h-[460px] md:h-[520px] lg:h-[560px] flex items-center justify-center cursor-grab active:cursor-grabbing"
         >
           <HeroScene />
         </motion.div>
       </div>
 
-      {/* 3. Bottom Editorial Grid & Actions (Faithful to video aesthetic) */}
+      {/* 2. Bottom Editorial Grid & Actions (Faithful to video aesthetic) */}
       <div className="w-full max-w-content mx-auto z-20 relative pt-4 border-t border-black/[0.08]">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
           {/* Bottom Left: Editorial Inscription (like in video) */}
