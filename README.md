@@ -68,7 +68,7 @@ AuraGym/
 ```bash
 npm install
 ```
-
+## Live Link : [https://aura-gym-teal.vercel.app/]
 ### 2. Configure Environment Variables (Optional)
 The backend includes a zero-config fallback store for instant local development. To connect your live Supabase instance:
 Copy `aura-gym-api/.env.example` to `aura-gym-api/.env` and supply:
